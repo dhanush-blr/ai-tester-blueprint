@@ -10,7 +10,7 @@ This module leverages local Large Language Models (LLMs) alongside structured pr
 | :------------------------- | :-----------------------: | :------------------: | :-----------------: |
 | Data Extraction            | 🟢**100% Complete** | `qwen2.5-coder:14b` |      RICE-POT       |
 | Anti-Hallucination Audit   |    🟢**Passed**    |    Ollama (Local)    | Pramod Dutta Ruleset |
-| Target Artifact Generated  |     🟢**Ready**     |     CSV Engine       | RICE-POT + STLC     |
+| Target Artifact Generated  |     🟢**Ready**     | CSV + Markdown Engine | RICE-POT + STLC     |
 
 ---
 
@@ -48,7 +48,9 @@ An audit layer driven by the strict verification rulesets authored by Pramod Dut
 ├── docs/
 │   ├── Anti_Hallucinations_Rules.md  <-- Strict verification gatekeeper guidelines
 │   ├── Source_Context.md             <-- Cleaned ground-truth PRD details
-│   └── execution_proof_screenshot.png  <-- Local IDE execution proof image
+│   ├── login_proof_screenshot.png    <-- Local PRD/login proof image
+│   └── continue_execution_proof.png <-- Local IDE execution proof image
 └── output/
-    └── Final_Test_Cases.csv   <-- The finalized, hallucination-free test case CSV artifact
+    ├── Final_Test_Cases.csv   <-- The finalized, hallucination-free test case CSV artifact
+    └── Final_Test_Cases.md   <-- A markdown-rendered report of the same test cases
 ```

@@ -9,7 +9,7 @@ Welcome to my unified QA engineering and AI testing learning repository. This da
 | Module | Status | Engine | Framework | Input | Output |
 |:-------|:------:|:------:|:---------:|:-----:|:------:|
 | **01** — AI-Driven Test Plan Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | Restful Booker API Spec | `Final_Test_Plan.md` |
-| **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` |
+| **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` + `Final_Test_Cases.md` |
 
 ---
 
@@ -94,7 +94,7 @@ Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, 
 |:----------|:------:|:---------:|
 | Data Extraction | 🟢 **100% Complete** | RICE-POT |
 | Anti-Hallucination Audit | 🟢 **Passed** | Pramod Dutta Ruleset |
-| Target Artifact Generated | 🟢 **Ready** — `Final_Test_Cases.csv` | RICE-POT + STLC |
+| Target Artifact Generated | 🟢 **Ready** — `Final_Test_Cases.csv` + `Final_Test_Cases.md` | RICE-POT + STLC |
 
 ```text
 02_test_case_generator/
@@ -102,9 +102,11 @@ Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, 
 ├── docs/
 │   ├── Anti_Hallucinations_Rules.md
 │   ├── Source_Context.md
-│   └── login_proof_screenshot.png
+│   ├── login_proof_screenshot.png
+│   └── continue_execution_proof.png
 └── output/
-    └── Final_Test_Cases.csv
+    ├── Final_Test_Cases.csv
+    └── Final_Test_Cases.md
 ```
 
 👉 [View module details →](./02_test_case_generator/README.md)
