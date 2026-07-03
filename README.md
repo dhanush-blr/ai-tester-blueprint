@@ -10,6 +10,7 @@ Welcome to my unified QA engineering and AI testing learning repository. This da
 |:-------|:------:|:------:|:---------:|:-----:|:------:|
 | **01** — AI-Driven Test Plan Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | Restful Booker API Spec | `Final_Test_Plan.md` |
 | **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` + `Final_Test_Cases.md` |
+| **03** — Playwright API Test Framework | 🟢 **Complete** | Playwright + TypeScript | RICE-POT + Controller Pattern + Anti-Hallucination Audit | `skill.md` specification | `playwright_api_framework/` |
 
 ---
 
@@ -113,6 +114,55 @@ Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, 
 
 </details>
 
+<details open>
+<summary><b>📋 Module 03 — Playwright API Test Framework</b> <code>03_playwright_api_framework/</code></summary>
+
+<br>
+
+Enterprise-grade, type-safe API testing framework built on Playwright's native `APIRequestContext` with zero external HTTP clients. Scaffolded via the RICE-POT prompt framework using a `skill.md` specification and audited against the Anti-Hallucination Ruleset.
+
+**Milestones:**
+
+| Milestone | Status | Framework |
+|:----------|:------:|:---------:|
+| RICE-POT Scaffolding | 🟢 **100% Complete** | RICE-POT + `skill.md` |
+| Anti-Hallucination Audit | 🟢 **Passed** | Pramod Dutta Ruleset |
+| Framework Implementation | 🟢 **Ready** — `playwright_api_framework/` | Controller Pattern + Playwright |
+
+```text
+03_playwright_api_framework/
+├── README.md
+├── Anti_Hallucinations_Rules.md
+├── skill.md
+└── playwright_api_framework/
+    ├── core/
+    │   ├── base.client.ts       # Typed GET/POST/PUT/DELETE/PATCH
+    │   └── env.config.ts        # Pre-flight env validator
+    ├── api/
+    │   ├── types/               # Request/response interfaces (no `any`)
+    │   ├── auth.client.ts       # OAuth2 client-credentials grant
+    │   └── user.client.ts       # /users controller
+    ├── data/
+    │   └── user.factory.ts      # Pure builder function
+    ├── fixtures/
+    │   └── api.fixture.ts       # Custom test base — auto-auth, auto-log on failure
+    └── tests/
+        ├── users.spec.ts        # Authenticated CRUD scenarios
+        └── smoke.spec.ts        # Plumbing verification
+```
+
+**Key highlights:**
+
+- **Zero `any` types** — every request/response has a dedicated interface
+- **Fixture-based auth** — bearer token injected per-test via custom Playwright fixture
+- **Auto-failure logging** — full request/response JSON attached to HTML report on failure
+- **Parallel-safe** — `fullyParallel: true`, no shared state between tests
+- **CI-ready** — 4-shard matrix with npm cache, secrets, and HTML report artifact
+
+👉 [View module details →](./03_playwright_api_framework/README.md)
+
+</details>
+
 ---
 
 ## 🚀 Getting Started
@@ -121,16 +171,26 @@ Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, 
 
 - [Ollama](https://ollama.ai/) installed locally
 - `qwen2.5-coder:14b` model pulled (`ollama pull qwen2.5-coder:14b`)
+- [Node.js](https://nodejs.org/) 18+ (for Module 03)
 - Target project documentation (PRD, API spec, screenshots)
 
 ### Running a Module
 
-Each module is a **prompt engineering pipeline** — no code to run. The workflow:
+**Modules 01–02** are **prompt engineering pipelines** — no code to run:
 
 1. **Clean** your source documentation into `docs/Source_Context.md`
 2. **Prompt** the local LLM using the RICE-POT template (included in each module's README)
 3. **Validate** the output against `docs/Anti_Hallucinations_Rules.md`
 4. **Review** the artifact in `output/`
+
+**Module 03** is a **code framework** — run tests directly:
+
+```bash
+cd 03_playwright_api_framework/playwright_api_framework
+npm install
+cp .env.example .env        # Fill in your environment values
+npm test                    # Run all tests
+```
 
 ---
 

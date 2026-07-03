@@ -1,3 +1,8 @@
 .DS_Store
 Thumbs.db
 *.pdf
+node_modules/
+.env
+playwright-report/
+test-results/
+.commandcode/

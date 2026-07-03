@@ -1,0 +1,19 @@
+{
+  "name": "playwright-api-framework",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:dev": "ENVIRONMENT=dev playwright test",
+    "test:qa": "ENVIRONMENT=qa playwright test",
+    "test:staging": "ENVIRONMENT=staging playwright test",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^17.4.2",
+    "typescript": "^5.7.0"
+  }
+}
