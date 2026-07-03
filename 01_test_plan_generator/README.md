@@ -18,7 +18,7 @@ This module focuses on leveraging local Large Language Models (LLMs) alongside a
 
 The following screenshot demonstrates the local generation and quality audit interface operating flawlessly within VS Code via Continue.dev and `qwen2.5-coder:14b`:
 
-![Continue.dev Local LLM Generation and Audit Proof](docs/continue_execution_proof.jpg)
+![Continue.dev Local LLM Generation and Audit Proof](docs/continue_execution_proof.jpeg)
 
 ## 📜 Credits
 
