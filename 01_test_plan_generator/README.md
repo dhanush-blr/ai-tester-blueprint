@@ -1,26 +1,55 @@
 
-# Module 01: AI-Driven Test Plan Generator
+# 🚀 Module 01: AI-Driven Test Plan Generator
 
-This module focuses on leveraging local Large Language Models (LLMs) alongside advanced prompt engineering frameworks to parse raw project documentation and generate production-grade, hallucination-free test plans.
+This module leverages local Large Language Models (LLMs) alongside structured prompt engineering frameworks to parse raw project documentation and generate production-grade, hallucination-free test plans.
+
+---
+
+## 📊 Quick Project Status
+
+| Milestone                 |          Status          |        Engine        |      Framework      |
+| :------------------------ | :-----------------------: | :-------------------: | :------------------: |
+| Data Extraction           | 🟢**100% Complete** | `qwen2.5-coder:14b` |       RICE-POT       |
+| Anti-Hallucination Audit  |    🟢**Passed**    |    Ollama (Local)    | Pramod Dutta Ruleset |
+| Target Artifact Generated |     🟢**Ready**     |    Markdown Engine    |    Standard STLC    |
+
+---
 
 ## 🛠️ Architecture & Core Mechanics
 
-* **RICE-POT Prompting Framework:** Structured configuration blocks mapping out the explicit *Role, Instructions, Context, Examples, Parameters, Output,* and *Tone* sent to the model.
-* **Anti-Hallucination Guardrails:** An audit layer driven by strict verification rulesets to guarantee zero default template fluff and complete data traceability.
+<details>
+<summary><b>🔍 Click to expand: Prompt Engineering Framework (RICE-POT)</b></summary>
 
-## 💻 Tech Stack
+The system operates as a deterministic pipeline that ensures high-fidelity documentation extraction without introducing common generative AI inaccuracies:
 
-* **Local LLM Engine:** Ollama running `qwen2.5-coder:14b`
-* **IDE Integration:** Continue.dev extension inside Visual Studio Code
-* **Target Domain:** Restful Booker CRUD API (POST, GET, PUT, DELETE)
+* **Role:** Senior QA Automation Lead.
+* **Instructions:** Direct parsing and synthesis parameters.
+* **Context:** Strict binding to the project's source data file.
+* **Examples:** Mapping required header outputs explicitly.
+* **Parameters:** Stripping out default template filler assumptions.
+* **Output:** Pristine raw markdown configuration structures.
+* **Tone:** Highly technical, precise, and authoritative.
 
-## 📸 Execution Verification Preview
+</details>
 
-The following screenshot demonstrates the local generation and quality audit interface operating flawlessly within VS Code via Continue.dev and `qwen2.5-coder:14b`:
+<details>
+<summary><b>🛡️ Click to expand: Anti-Hallucination Guardrails</b></summary>
 
-![Continue.dev Local LLM Generation and Audit Proof](docs/continue_execution_proof.jpeg)
+An audit layer driven by the strict verification rulesets authored by Pramod Dutta (Principal SDET) ensures zero default template assumptions, full data traceability, and mandatory "Insufficient information to determine" fallbacks when data gaps appear.
 
-## 📜 Credits
+</details>
 
-* **Anti-Hallucination Framework:** Pramod Dutta (Principal SDET, The Testing Academy)
-* **Powered by:** Ollama (`qwen2.5-coder:14b`) & Continue.dev
+---
+
+## 📂 Repository File Blueprint
+
+```text
+01_test_plan_generator/
+├── README.md               <-- Local Project Documentation & Showcase
+├── docs/
+│   ├── Anti_Hallucinations_Rules.md  <-- Strict verification gatekeeper guidelines
+│   ├── Source_Context.md             <-- Cleaned ground-truth project details
+│   └── continue_execution_proof.jpg  <-- Local IDE execution proof image
+└── output/
+    └── Final_Test_Plan.md            <-- The finalized, hallucination-free test plan artifact
+```
