@@ -111,6 +111,12 @@ export default function App() {
   const [jiraToken, setJiraToken] = useState(localStorage.getItem('JIRA_TOKEN') || '');
   const [groqKey, setGroqKey] = useState(localStorage.getItem('GROQ_KEY') || '');
   const [groqModel, setGroqModel] = useState(localStorage.getItem('GROQ_MODEL') || 'openai/gpt-oss-120b');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   // App running states
   const [jiraId, setJiraId] = useState('');
@@ -270,13 +276,23 @@ export default function App() {
         <h1 className="brand-title">
           <span>⚡</span> Test Strategy Builder AI
         </h1>
-        <button 
-          className="btn-secondary" 
-          onClick={() => setShowSettings(true)}
-          style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-        >
-          ⚙️ Settings Overlay
-        </button>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            className="btn-secondary" 
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px' }}
+            title="Toggle theme"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+          <button 
+            className="btn-secondary" 
+            onClick={() => setShowSettings(true)}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            ⚙️ Settings Overlay
+          </button>
+        </div>
       </header>
 
       {/* Main Split Layout */}

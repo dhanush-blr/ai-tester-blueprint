@@ -30,6 +30,8 @@ This document lists the plan, tasks, and status for the standalone decoupled Tes
 - [x] Design configuration panel and setting overlay modal for LLM parameters (model, temperature, etc.)
 - [x] Integrate rich markdown preview rendering engine with markdown downloads
 - [x] Construct dynamic error banners mapping API statuses to friendly validation warnings
+- [x] Integrate high-fidelity Light/Dark mode theme toggle across the dashboard workspace
+
 
 ## 🚀 Phase 5: Trigger (Deployment & Self-Annealing)
 - [x] Add unified startup commands in root `package.json`
@@ -41,6 +43,8 @@ This document lists the plan, tasks, and status for the standalone decoupled Tes
 - [ ] Run Self-Annealing checks for markdown formatting boundaries and array filtering
 - [x] Complete workspace-specific README documentation and cross-link from root catalog
 - [x] Add dashboard screenshots and settings modal captures to the project README
+- [x] Commit and push all production updates to remote GitHub repository
+
 
 
 

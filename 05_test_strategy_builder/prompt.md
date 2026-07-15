@@ -154,6 +154,31 @@ You are the System Pilot, executing the cloud sync step of Phase 5 (Trigger & De
 1. Production Build Synchronization: Navigate to the `client/` directory and re-compile the production bundle: `npm run build`.
 2. Deploy Sync Trigger: Execute `npx vercel --prod` to trigger a production edge deploy of the updated error-handling layouts.
 
+---
+
+## 9. Phase 5: Trigger & Deployment (GitHub Repository Sync)
+
+### ROLE
+You are the System Pilot, executing the final code lifecycle step in Phase 5 (Trigger & Deployment) to commit and push all production updates to the remote GitHub repository.
+
+### INSTRUCTIONS
+1. Workspace Status Audit: Check the local Git tree state to ensure all modified source files are recognized: `git status`.
+2. Repository Synchronization: Stage, commit, and push all modifications to the remote repository.
+
+---
+
+## 10. Phase 4: Stylize & UI Refinement (Light/Dark Theme Integration)
+
+### ROLE
+You are the System Pilot, executing a Phase 4 (Stylize & UI Refinement) sprint to integrate a high-fidelity Light/Dark mode theme toggle across the dashboard workspace.
+
+### INSTRUCTIONS
+1. Design System Foundation: Open `client/src/index.css` and refactor styling tokens to root CSS variables mapping dark/light modes.
+2. React State Architecture: Open `client/src/App.jsx` and implement theme state tracking hooks, DOM element attribute syncs, and the header toggler button (☀️/🌙) next to Settings.
+3. Validation & Build Pass: Confirm compilation via `npm run build` and sync changes to Vercel production edge.
+
+
+
 
 
 
