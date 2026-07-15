@@ -11,6 +11,7 @@ Welcome to my unified QA engineering and AI testing learning repository. This da
 | **01** — AI-Driven Test Plan Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | Restful Booker API Spec | `Final_Test_Plan.md` |
 | **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` + `Final_Test_Cases.md` |
 | **03** — Playwright API Test Framework | 🟢 **Complete** | Playwright + TypeScript | RICE-POT + Controller Pattern + Anti-Hallucination Audit | `skill.md` specification | `playwright_api_framework/` |
+| **04** — Jira QA Test Plan Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `output/test-plan-*.md` + Dashboard |
 
 ---
 
@@ -45,6 +46,21 @@ An audit layer driven by strict verification rulesets authored by **Pramod Dutta
 - **Deterministic output** — same input always produces same output
 
 Each module runs a **4-step self-validation audit**: Verified Facts → Missing/Unknown Info → Generated Output → Self-Validation Check.
+
+</details>
+
+<details>
+<summary><b>🚀 Click to expand: B.L.A.S.T. System Architecture Framework</b></summary>
+
+The **B.L.A.S.T.** system design framework governs how the testing engines, server proxies, and visual rendering cards operate under modular, decoupled boundaries:
+
+| Letter | Component | Purpose |
+|:------:|:----------|:--------|
+| **B** | **Boundaries** | Decoupling presentation layers from proxy controllers (e.g., React UI + Express Backend). |
+| **L** | **Links** | Standardizing secure API credential waterfalls and real-time connection handshakes. |
+| **A** | **Assets** | Serving clean, formatted rendering panes (e.g., markdown lists, preconditions tables). |
+| **S** | **Storage** | Syncing persistent user overlays without local token leakages. |
+| **T** | **Triggers** | Automating dev/prod bootstrap compilation routes concurrently. |
 
 </details>
 
@@ -163,6 +179,49 @@ Enterprise-grade, type-safe API testing framework built on Playwright's native `
 
 </details>
 
+<details open>
+<summary><b>📋 Module 04 — Jira QA Test Plan Agent</b> <code>04_jira_ai_agent/</code></summary>
+
+<br>
+
+On-demand Jira issue fetcher and anti-hallucination QA test plan compiler. Reorganized into a decoupled full-stack architecture (Vite + React frontend and Express server proxy) with secure local environment variables, visual screenshots walkthrough, and connection diagnostic handshakes.
+
+**Milestones:**
+
+| Milestone | Status | Framework |
+|:----------|:------:|:---------:|
+| Data Normalization (ADF to Text) | 🟢 **100% Complete** | Jira REST API v3 Client |
+| Anti-Hallucination Audit | 🟢 **Passed** | B.L.A.S.T. framework prompts |
+| Full-Stack Dashboard Implementation | 🟢 **Ready** — Vite React + Express | Glassmorphic Dark Design |
+
+```text
+04_jira_ai_agent/
+├── backend/                             # Express Server Module
+│   ├── server.js                        # CORS proxy and routes mapping
+│   └── src/services/                    # Jira, Groq, & Test Plan services
+├── client/                              # Decoupled Vite React Client
+│   ├── src/                             # App.jsx viewport and index.css
+│   └── vite.config.js                   # Client dev build proxy server mapping
+├── docs/                                # BLAST guidelines and Architecture SOPs
+│   ├── B.L.A.S.T.md                     # BLAST Protocol standards specs
+│   ├── images/                          # Dashboard screenshots
+│   └── architecture/                    # Jira fetch & Anti-hallucination SOPs
+├── .env.example                         # Pristine configuration template
+├── .gitignore                           # Exclusions matrix
+└── README.md                            # Dedicated setup guide manual
+```
+
+**Key highlights:**
+
+- **Decoupled Architecture** — Vite SPA frontend mapping proxy requests to Express service modules
+- **Interactive Viewport** — Centered glassmorphic error panel overlays and live connection state badging
+- **Security Exclusion Matrix** — Strict `.gitignore` boundaries blocking env configs and local temp files
+- **Defensive Filtering** — Trim boundaries avoiding trailing empty bullet points in exported files
+
+👉 [View module details →](./04_jira_ai_agent/README.md)
+
+</details>
+
 ---
 
 ## 🚀 Getting Started
@@ -190,6 +249,15 @@ cd 03_playwright_api_framework/playwright_api_framework
 npm install
 cp .env.example .env        # Fill in your environment values
 npm test                    # Run all tests
+```
+
+**Module 04** is a **full-stack application** — run dev servers concurrently:
+
+```bash
+cd 04_jira_ai_agent
+npm install
+cp .env.example .env        # Fill in your environment values
+npm run dev                 # Start React and Express concurrently
 ```
 
 ---
