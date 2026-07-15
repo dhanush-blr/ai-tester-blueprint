@@ -1,7 +1,7 @@
 # 🔍 Jira QA Test Plan Generator
 
-[![Stack](https://img.shields.io/badge/Stack-React%20%7C%20Vite%20%7C%20Express-blue?style=for-the-badge&logo=react)](https://react.dev)
-[![AI Engine](https://img.shields.io/badge/AI%20Engine-Groq%20%7C%20GPT--OSS--120B-purple?style=for-the-badge)](https://groq.com)
+[![Stack](<https://img.shields.io/badge/Stack-React%20%7C%20Vite%20%7C%20Express-blue?style=for-the-badge&logo=react>)](https://react.dev)
+[![AI Engine](<https://img.shields.io/badge/AI%20Engine-Groq%20%7C%20GPT--OSS--120B-purple?style=for-the-badge>)](https://groq.com)
 [![BLAST Framework](https://img.shields.io/badge/Framework-B.L.A.S.T.-emerald?style=for-the-badge)](./docs/B.L.A.S.T.md)
 
 A premium, full-stack QA automation companion designed to fetch JIRA issues on-demand, recursively normalize complex Atlassian Document Format (ADF) logs to clean text description parameters, and compile comprehensive, anti-hallucinatory QA Test Plans utilizing **B.L.A.S.T. framework** specifications and **Groq LLM completions**.
@@ -9,18 +9,21 @@ A premium, full-stack QA automation companion designed to fetch JIRA issues on-d
 ---
 
 ## 🗺️ Table of Contents
+
 1. [System Summary](#-system-summary)
 2. [Engineering Methodology](#️-engineering-methodology)
-3. [Visual Walkthrough & Screenshots](#-visual-walkthrough--screenshots)
+3. [Visual Walkthrough &amp; Screenshots](#-visual-walkthrough--screenshots)
 4. [Dashboard Evolution](#-dashboard-evolution-uiux-refinements)
 5. [Directory Blueprint](#-directory-blueprint)
-6. [Environment & Credentials Waterfall](#-environment--credentials-waterfall)
+6. [Environment &amp; Credentials Waterfall](#-environment--credentials-waterfall)
 7. [Local Bootstrap Guide](#-local-bootstrap-guide)
 
 ---
 
 ## ⚡ System Summary
+
 The application separates concerns across clear client and server boundaries:
+
 * **Frontend Presentation**: A sleek, glassmorphic React single-page application built on Vite. It supports real-time API diagnostic status indicators, in-memory Settings credentials, a True Markdown preview engine, and single-click browser file downloads.
 * **Backend Orchestration**: A zero-CORS Express proxy server listening on port `5001`. It secures token exchanges, routes diagnostic handshakes, flattens ADF fields, and connects to Groq API systems.
 * **Anti-Hallucination Guardrails**: Powered by `openai/gpt-oss-120b` running at zero temperature. System prompt configurations force the AI to return `TBD` or document missing specification details inside a dedicated requirements gaps list rather than inventing features.
@@ -31,13 +34,15 @@ The application separates concerns across clear client and server boundaries:
 
 The Jira QA Test Plan Generator is built on a foundation of rigorous structural frameworks, combining prompt design with system engineering to deliver consistent, deterministic QA plans without LLM hallucinations.
 
-| Framework | Core Focus | Implemented Application |
-|:---|:---|:---|
-| **RICE-POT** | **Prompt Engineering** | Governs how the LLM is instructed: adopts a strict QA Specialist **Role**, executes structured translation **Instructions**, binds strictly to the fetched ticket **Context**, runs under zero-temperature **Parameters**, compiles a deterministic JSON **Output**, and enforces a formal **Tone**. |
-| **B.L.A.S.T.** | **System Architecture** | Governs how the application operates: isolates **Boundaries** via decoupled frontend/backend services, coordinates connection **Links** with real-time handshakes, renders **Assets** with a true Markdown preview pane, isolates **Storage** configuration states in memory, and triggers local **Triggers** concurrently. |
+| Framework            | Core Focus                    | Implemented Application                                                                                                                                                                                                                                                                                                                                  |
+| :------------------- | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RICE-POT**   | **Prompt Engineering**  | Governs how the LLM is instructed: adopts a strict QA Specialist**Role**, executes structured translation **Instructions**, binds strictly to the fetched ticket **Context**, runs under zero-temperature **Parameters**, compiles a deterministic JSON **Output**, and enforces a formal **Tone**.                  |
+| **B.L.A.S.T.** | **System Architecture** | Governs how the application operates: isolates**Boundaries** via decoupled frontend/backend services, coordinates connection **Links** with real-time handshakes, renders **Assets** with a true Markdown preview pane, isolates **Storage** configuration states in memory, and triggers local **Triggers** concurrently. |
 
 ### The Deterministic, Zero-Hallucination Pipeline
+
 By merging RICE-POT prompt guardrails with B.L.A.S.T. architectural constraints:
+
 1. The **Context** (RICE-POT) is derived strictly from Normalized ADF fields retrieved via isolated **Boundaries** (B.L.A.S.T.).
 2. The **Parameters** (RICE-POT) force the LLM to output "TBD" on data gaps instead of fabricating specs, while the **Assets** renderer (B.L.A.S.T.) compiles this information cleanly for visual analysis.
 3. This synchronization completely removes the risk of "invented features" or "hallucinated API routes", ensuring that output plans are 100% traceable to the source ticket specifications.
@@ -55,6 +60,7 @@ Below is a walkthrough of the premium dark-theme interface in action.
 Features a clean input prompt and real-time active gateway metrics pointing out current connection health.
 
 ![Dashboard Empty State](./docs/images/dashboard_empty.png)
+
 </details>
 
 <details>
@@ -63,7 +69,8 @@ Features a clean input prompt and real-time active gateway metrics pointing out 
 
 Securely modify Jira instances, API tokens, and Groq endpoints. Triggers connections check tests updating status badges dynamically.
 
-![Settings Modal](./docs/images/settings_modal.png)
+![Settings Modal](./docs/images/setting_modal.png)
+
 </details>
 
 <details>
@@ -73,6 +80,7 @@ Securely modify Jira instances, API tokens, and Groq endpoints. Triggers connect
 Translates JSON plans into styled headers, list blocks, preconditions tables, and edge-case mitigation checklists.
 
 ![Test Plan Generated Output](./docs/images/dashboard_output.png)
+
 </details>
 
 ---
@@ -136,11 +144,13 @@ The project codebase follows a decoupled architectural layout:
 
 > [!IMPORTANT]
 > The server maps authentication properties dynamically using a strict waterfall hierarchy:
+>
 > 1. **Header Overrides**: Passed live from browser Settings.
 > 2. **Payload Overrides**: Passed in request bodies.
 > 3. **Local Defaults**: Loaded fallback settings from the root `.env` file.
 
 ### Local Config Template (`.env`):
+
 ```ini
 # Jira Cloud Configuration
 JIRA_URL=https://<your-domain>.atlassian.net
@@ -157,7 +167,9 @@ GROQ_MODEL=openai/gpt-oss-120b
 ## 🏁 Local Bootstrap Guide
 
 ### 1. Installation
+
 Run standard package installations inside the workspace root:
+
 ```bash
 # Install backend and concurrency tools
 npm install
@@ -167,21 +179,29 @@ npm run postinstall
 ```
 
 ### 2. Launching in Development Mode
+
 Start both Express server and React client concurrently:
+
 ```bash
 npm run dev
 ```
+
 * Access the client dashboard directly at: [http://localhost:5173](http://localhost:5173)
 
 ### 3. Launching in Production Mode
+
 Compile frontend static distribution pages:
+
 ```bash
 npm run build
 ```
+
 Launch the Express production server:
+
 ```bash
 npm start
 ```
+
 * Access the integrated application directly at: [http://localhost:5001](http://localhost:5001)
 
 > [!TIP]
