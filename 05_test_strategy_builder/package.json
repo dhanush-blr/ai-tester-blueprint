@@ -1,0 +1,23 @@
+{
+  "name": "test-strategy-builder",
+  "version": "1.0.0",
+  "description": "React + Express Test Strategy Builder utilizing BLAST framework",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "npm run build --prefix client",
+    "client": "npm run dev --prefix client",
+    "server": "node server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "postinstall": "npm install --prefix client"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "Antigravity QA AI Agent",
+  "license": "MIT"
+}

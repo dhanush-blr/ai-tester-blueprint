@@ -12,6 +12,7 @@ Welcome to my unified QA engineering and AI testing learning repository. This da
 | **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` + `Final_Test_Cases.md` |
 | **03** — Playwright API Test Framework | 🟢 **Complete** | Playwright + TypeScript | RICE-POT + Controller Pattern + Anti-Hallucination Audit | `skill.md` specification | `playwright_api_framework/` |
 | **04** — Jira QA Test Plan Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `output/test-plan-*.md` + Dashboard |
+| **05** — Test Strategy Builder Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `test-strategy-*.md` + Dashboard |
 
 ---
 
@@ -222,6 +223,52 @@ On-demand Jira issue fetcher and anti-hallucination QA test plan compiler. Reorg
 
 </details>
 
+<details open>
+<summary><b>📋 Module 05 — Test Strategy Builder Agent</b> <code>05_test_strategy_builder/</code></summary>
+
+<br>
+
+On-demand Jira issue parser and boardroom-ready Quality Assurance Test Strategy compiler. Built on a decoupled full-stack architecture (Vite + React frontend and Express server proxy) with secure local environment variables, diagnostic connection checks, and a live production cloud deployment on Vercel.
+
+**Milestones:**
+
+| Milestone | Status | Framework |
+|:----------|:------:|:---------:|
+| Data Ingestion & Discovery Questionnaire | 🟢 **100% Complete** | Jira REST API v3 Client |
+| Anti-Hallucination Schemas | 🟢 **Passed** | B.L.A.S.T. Framework prompts |
+| Glassmorphic Dark UI & GFM Rendering | 🟢 **Ready** — Vite React + Express | remark-gfm parser + settings |
+| Production Cloud Deployment | 🟢 **Deployed** | Vercel Serverless hosting |
+
+```text
+05_test_strategy_builder/
+├── server/                              # Express Backend Proxy
+│   └── server.js                        # CORS proxy, Jira fetcher & Groq executor
+├── client/                              # Decoupled Vite React Client
+│   ├── vite.config.js                   # Client dev proxy server
+│   └── src/                             # React Components (App.jsx & styling)
+├── docs/                                # BLAST guidelines and Architecture Constitution
+│   ├── LLM.md                           # Constitutional data contract shapes
+│   ├── findings.md                      # Port configurations & key isolation findings
+│   ├── progress.md                      # Chronological sprint milestones
+│   ├── requirements_discovery.md        # Completed requirements questionnaire
+│   └── task_plan.md                     # Roadmap checklist
+├── vercel.json                          # Vercel deployment descriptor config
+├── .env.example                         # Pristine environment configuration template
+├── .gitignore                           # Exclusions matrix
+└── README.md                            # Comprehensive module guide manual
+```
+
+**Key highlights:**
+
+- **Decoupled Architecture** — Vite SPA frontend mapping proxy requests to Express service modules.
+- **GFM Table Support** — Full Integration of `remark-gfm` to render tech stack tool mappings and risk mitigations inside markdown tables.
+- **Vercel Serverless Hosting** — Production hosted at `https://05teststrategybuilder.vercel.app`.
+- **Zero-CORS Client Communication** — Secure transit of runtime token overrides via custom request headers.
+
+👉 [View module details →](./05_test_strategy_builder/README.md)
+
+</details>
+
 ---
 
 ## 🚀 Getting Started
@@ -255,6 +302,15 @@ npm test                    # Run all tests
 
 ```bash
 cd 04_jira_ai_agent
+npm install
+cp .env.example .env        # Fill in your environment values
+npm run dev                 # Start React and Express concurrently
+```
+
+**Module 05** is a **full-stack application** — run dev servers concurrently:
+
+```bash
+cd 05_test_strategy_builder
 npm install
 cp .env.example .env        # Fill in your environment values
 npm run dev                 # Start React and Express concurrently
