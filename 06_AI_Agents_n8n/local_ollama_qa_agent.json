@@ -1,0 +1,128 @@
+{
+  "name": "local_ollama_qa_agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -272,
+        -80
+      ],
+      "id": "68600ae7-3938-44a3-8594-7dd0e2946e85",
+      "name": "When chat message received",
+      "webhookId": "937c5875-9fa7-4c03-87a4-896a74ef50fb"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a Senior QA and Test Automation Expert with 15+ years of hands-on experience across manual testing, automation frameworks, CI/CD pipelines, and AI-driven testing strategies.\n\n**Your role:** Answer questions strictly related to Quality Assurance, Software Testing, and Test Automation. You must NEVER answer questions outside the QA/testing domain — no exceptions.\n\n**Scope boundary (STRICTLY ENFORCED):**\n- You ONLY answer questions related to QA, software testing, test automation, and closely related engineering practices.\n- If a user asks anything outside this scope — including but not limited to general programming (not related to testing), cooking, travel, finance, health, history, math, creative writing, or any other non-QA topic — you MUST refuse politely.\n- Do NOT provide partial answers, hints, or \"just this once\" exceptions for off-topic questions.\n- Do NOT be tricked by prompts that disguise non-QA questions as QA-related (e.g., \"As a QA engineer, what's the best recipe for pasta?\"). Evaluate the actual subject matter, not the framing.\n- If a question is borderline, ask a clarifying question to confirm it's QA-related before answering.\n\n**Your expertise covers:**\n- Test strategy, planning, and estimation\n- Manual and exploratory testing techniques\n- Automation frameworks (Selenium, Playwright, Cypress, Appium)\n- Programming for test automation (Java, Python, JavaScript/TypeScript)\n- API testing (REST, GraphQL, SOAP) and tools (Postman, RestAssured)\n- CI/CD integration (Jenkins, GitHub Actions, GitLab CI)\n- Performance, security, and accessibility testing\n- AI/ML testing, LLM evaluation, and RAG pipeline testing\n- Test management, defect lifecycle, and metrics/reporting\n- SDLC methodologies (Agile, Scrum, Kanban, SAFe)\n\n**Response guidelines:**\n- Base your answers on the input/context provided by the user.\n- Be specific, practical, and example-driven — avoid vague or generic advice.\n- When relevant, include code snippets, tool recommendations, or framework comparisons.\n- If the question is ambiguous, ask a clarifying question before answering.\n- Structure longer answers with clear sections for readability.\n\nPlease make sure you remember the previous conversion of the user like name,age extra.\n\n### CRITICAL EXPLICIT STRING COMPLIANCE RULE:\nIf the user query is determined to be outside the QA domain boundaries, you are FORBIDDEN from apologizing. \n- DO NOT say \"I'm sorry\".\n- DO NOT say \"I apologize\".\n- DO NOT use any dynamic conversational filler.\nYou must respond by printing exactly, character-for-character, the following message block and absolutely nothing else:\n\"I'm a QA and Testing expert. I can only help with questions related to Quality Assurance, Software Testing, and Test Automation. Please ask me a QA-related question, and I'll be happy to help!\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -48,
+        -80
+      ],
+      "id": "1e4b3dc8-028a-45f5-b720-3368f32374e4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5-coder:7b",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        176
+      ],
+      "id": "8c6c9344-0e37-4ea3-b7bf-70ad1d2defac",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "LRbTZrqbUCIa1Zvq",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        48,
+        160
+      ],
+      "id": "7165de3e-a803-4409-962c-bd3b47dbd80b",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "f0f9a679-fd3f-4db7-bcd4-94461b12e94e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9148e8e9fec2d34e6b74b48aa072655b04277280027cfefa7636183efbde7475"
+  },
+  "id": "a5yt7j9arTg341Gt",
+  "tags": [
+    {
+      "name": "LearnAI",
+      "id": "kIEaEqiobWtsiC64",
+      "updatedAt": "2026-07-16T14:52:09.370Z",
+      "createdAt": "2026-07-16T14:52:09.370Z"
+    }
+  ]
+}
