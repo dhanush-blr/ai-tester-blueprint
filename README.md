@@ -13,6 +13,7 @@ Welcome to my unified QA engineering and AI testing learning repository. This da
 | **03** — Playwright API Test Framework | 🟢 **Complete** | Playwright + TypeScript | RICE-POT + Controller Pattern + Anti-Hallucination Audit | `skill.md` specification | `playwright_api_framework/` |
 | **04** — Jira QA Test Plan Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `output/test-plan-*.md` + Dashboard |
 | **05** — Test Strategy Builder Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `test-strategy-*.md` + Dashboard |
+| **06** — n8n AI Orchestration Agents | 🟢 **Complete** | Ollama (`qwen2.5-coder:7b`) + Groq (`llama-3.3-70b`) | n8n Agents & LangChain | Jira / User Prompts | JSON Blueprints + Sheets DB |
 
 ---
 
@@ -269,6 +270,43 @@ On-demand Jira issue parser and boardroom-ready Quality Assurance Test Strategy 
 
 </details>
 
+<details open>
+<summary><b>📋 Module 06 — n8n AI Orchestration Agents</b> <code>06_AI_Agents_n8n/</code></summary>
+
+<br>
+
+Advanced AI agent orchestrations and LangChain pipeline blueprints managed via n8n. Features local LLM guardrails (Ollama) and cloud agent tools (Groq + Jira + Google Sheets).
+
+**Milestones:**
+
+| Milestone | Status | Framework |
+|:----------|:------:|:---------:|
+| Local Ollama QA Agent | 🟢 **100% Complete** | Anti-Apology / Refusal Guardrails |
+| Jira PRD to Sheets Agent | 🟢 **100% Complete** | Jira REST API + Google Sheets integrations |
+| Interactive Documentation | 🟢 **Ready** — [README.md](./06_AI_Agents_n8n/README.md) | Collapsible empirical execution proofs |
+
+```text
+06_AI_Agents_n8n/
+├── 6.1_local_ollama_qa_agent.json          # Local Ollama QA Agent blueprint
+├── 6.2_Read_PRD_TestCases_Excel.json       # Jira PRD to Google Sheets generator
+├── README.md                               # Interactive catalog with inline proofs
+└── images/                                 # Proof screenshots
+    ├── guardrail_refusal_proof.png
+    ├── in_scope_execution_proof.png
+    ├── jira_prd_sheets_workflow_proof.png
+    └── jira_prd_sheets_execution_proof.png
+```
+
+**Key highlights:**
+
+- **Local Guardrails (6.1)**: Strictly enforces an anti-apology block using local `qwen2.5-coder:7b` via Ollama, immediately returning corporate refusal strings for out-of-scope queries.
+- **Cross-Platform Integration (6.2)**: Integrates Jira Software Cloud with Google Sheets, converting user-specified Jira keys to structured test case sheets in real-time.
+- **Rich Verification Documentation**: Inline execution screenshots and live spreadsheet target links directly inside collapsible sections.
+
+👉 [View module details →](./06_AI_Agents_n8n/README.md)
+
+</details>
+
 ---
 
 ## 🚀 Getting Started
@@ -315,6 +353,12 @@ npm install
 cp .env.example .env        # Fill in your environment values
 npm run dev                 # Start React and Express concurrently
 ```
+
+**Module 06** is an **n8n orchestration suite** — run via n8n:
+
+1. Import the desired workflow JSON (`6.1_local_ollama_qa_agent.json` or `6.2_Read_PRD_TestCases_Excel.json`) into your local or cloud n8n instance.
+2. Configure API credentials for Ollama (local host), Groq, Jira Software Cloud, and Google Sheets.
+3. Trigger execution using n8n's Chat node viewport.
 
 ---
 

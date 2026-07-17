@@ -1,0 +1,336 @@
+{
+  "name": "6.2_Read_PRD_TestCases_Excel",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful assistantYou are a Senior QA Automation Architect specializing in test engineering agent frameworks. Your core operational task is to interpret user requests, fetch technical prerequisites from Jira, engineer comprehensive test cases, and record the results into a tracking spreadsheet.\n\nYou have access to the following tool inputs:\n1. \"Fetch PRD by ticket\" - Pulls full issue data (Summary, Description, Requirements) from Jira given a specific issue key (e.g., QA-123).\n2. \"Append or update row in sheet in...\" - Inserts structural row data arrays into the test repository spreadsheet.\n\n### 🔄 MANDATORY OPERATIONAL WORKFLOW SEQUENCE:\nWhen the user requests to \"create a test case\" or provides a Jira identifier, you must execute these precise technical phases sequentially without skipping a step:\n\n1. **Phase 1: Extraction & Key Verification**\n   - Parse the chat message input to find the target Jira issue key pattern (e.g., capital letters followed by a dash and number like ABC-123, PROJ-456).\n   - If the user says \"create test case\" but fails to supply a clear key string, prompt them for the missing issue key before invoking any tools.\n\n2. **Phase 2: Data Gathering via Jira Tool**\n   - Call the `Fetch PRD by ticket` tool. Pass the isolated issue key string exactly as the query parameter input.\n   - Extract the `summary` and `description` details from the tool payload, treating them as the official Product Requirement Document (PRD).\n\n3. **Phase 3: Test Case Engineering Generation**\n   - Analyze the requirement definitions retrieved from Jira. \n   - Author professional, deterministic test cases featuring: Test Case ID, Title, Pre-conditions, Detailed Steps, and Expected Output.\n\n4. **Phase 4: Spreadsheet Serialization Tooling**\n   - Transform your generated test cases into flat data fields mapping to the target spreadsheet layout.\n   - For EACH generated test case, immediately execute the `Append or update row in sheet in...` tool to append it as a new structured row.\n\n5. **Phase 5: Final User Executive Summary**\n   - Print a clean markdown notification block inside the chat interface window summarizing the issue key processed, the total count of test cases successfully added, and a brief tabular display of the generated titles.\n\n### 📊 TARGET SPREADSHEET ROW LAYOUT\nWhen passing data parameters to the spreadsheet appending tool, ensure the data aligns to this specific columnar scheme layout:\n- **Jira Key**: The source ticket ID.\n- **Test Case ID**: Generated increment token (e.g., TC-01).\n- **Title**: High-level test summary description phrase.\n- **Steps**: Numbered array text block detailing execution flow.\n- **Expected Result**: Precise validation state confirmation criterion.\n\n### 🛑 CRITICAL AGENT CONSTRAINTS\n- Always verify you are executing the sheet tool for ALL generated rows so no cases are lost.\n- Maintain a highly technical, structured QA engineer persona during execution phases."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        464,
+        0
+      ],
+      "id": "999df27e-149b-4929-bc6e-e2bf636d0e7f",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        224
+      ],
+      "id": "d5eda74a-eef6-4cdb-bb63-2c8e195258fe",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "issueKey": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Issue_Key', ``, 'string') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        528,
+        224
+      ],
+      "id": "ec625950-9183-4f59-b8bb-ebd879cb1c1e",
+      "name": "Fetch PRD by ticket",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "PahdSwFJuJChjs2I",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        112,
+        0
+      ],
+      "id": "c6d3e830-25cd-43e8-897e-ccea9eb6a6f8",
+      "name": "When chat message received",
+      "webhookId": "d2c2c2f8-f136-4fd7-b198-09483adf1ae2"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        192,
+        224
+      ],
+      "id": "a544f032-2bb4-4d45-820a-7a9c15872cac",
+      "name": "Groq Chat Model",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "groqApi": {
+          "id": "nQqgA4y0U2E70iWY",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19bPRiR3mLkfq0qDtqN2cNLhxV4vUKEvgcP--Y_xxlxc",
+          "mode": "list",
+          "cachedResultName": "KAN PRD Test cases",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19bPRiR3mLkfq0qDtqN2cNLhxV4vUKEvgcP--Y_xxlxc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19bPRiR3mLkfq0qDtqN2cNLhxV4vUKEvgcP--Y_xxlxc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Test Case ID": "={{ $fromAI('Test_Case_ID_using_to_match_', ``, 'string') }}",
+            "Test Scenario": "={{ $fromAI('Test_Scenario', ``, 'string') }}",
+            "Test Case Description": "={{ $fromAI('Test_Case_Description', ``, 'string') }}",
+            "Pre-conditions": "={{ $fromAI('Pre-conditions', ``, 'string') }}",
+            "Test Steps": "={{ $fromAI('Test_Steps', ``, 'string') }}",
+            "Test Data": "={{ $fromAI('Test_Data', ``, 'string') }}",
+            "Expected Result": "={{ $fromAI('Expected_Result', ``, 'string') }}",
+            "Actual Result": "={{ $fromAI('Actual_Result', ``, 'string') }}",
+            "Status": "={{ $fromAI('Status', ``, 'string') }}",
+            "Priority": "={{ $fromAI('Priority', ``, 'string') }}",
+            "Created By": "={{ $fromAI('Created_By', ``, 'string') }}",
+            "Date of Creation": "={{ $fromAI('Date_of_Creation', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Test Case ID"
+          ],
+          "schema": [
+            {
+              "id": "Test Case ID",
+              "displayName": "Test Case ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Test Scenario",
+              "displayName": "Test Scenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Test Case Description",
+              "displayName": "Test Case Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pre-conditions",
+              "displayName": "Pre-conditions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Test Steps",
+              "displayName": "Test Steps",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Test Data",
+              "displayName": "Test Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Expected Result",
+              "displayName": "Expected Result",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Actual Result",
+              "displayName": "Actual Result",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Priority",
+              "displayName": "Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Created By",
+              "displayName": "Created By",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date of Creation",
+              "displayName": "Date of Creation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        688,
+        224
+      ],
+      "id": "2e7e5678-74c6-4be5-80ef-fb2d31758048",
+      "name": "Append row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "1QVZzezYVb5XBvmI",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch PRD by ticket": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "3a12a43f-0edb-4dbf-b2ee-19b49201c413",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9148e8e9fec2d34e6b74b48aa072655b04277280027cfefa7636183efbde7475"
+  },
+  "id": "b4shl2xUqA7aIASi",
+  "tags": [
+    {
+      "updatedAt": "2026-07-16T14:52:09.370Z",
+      "createdAt": "2026-07-16T14:52:09.370Z",
+      "id": "kIEaEqiobWtsiC64",
+      "name": "LearnAI"
+    }
+  ]
+}
