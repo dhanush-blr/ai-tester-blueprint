@@ -1,0 +1,404 @@
+{
+  "name": "6.3_STLC_n8n_Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "STLC Artifact Generator",
+        "formDescription": "Upload a PRD PDF to automatically generate a Test Plan, Test Cases, and Playwright scripts.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Upload PRD PDF",
+              "fieldType": "file",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "17fcbfdb-1cc9-4065-b66a-bf82e4fef379",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "51384a3c-71aa-4695-826c-544da094df37"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "Upload_PRD_PDF",
+        "options": {}
+      },
+      "id": "4b50289c-1e65-400b-a679-e7f683bf5e01",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "llama-3.3-70b-versatile",
+          "mode": "list",
+          "cachedResultName": "LLAMA-3.3-70B-VERSATILE"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are an expert QA Manager. Analyze this PRD text carefully:\n{{ $json.text }}\n\nGenerate a comprehensive Test Plan adhering to professional Software Testing Life Cycle (STLC) standards. Include Scope, Exclusions, Test Strategy, and Risk Analysis. \nOutput your response STRICTLY in clean Markdown format. Do not write conversational introductions or conclusions. Start directly with '# Test Plan'."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "store": false
+        }
+      },
+      "id": "156ad08c-1703-4465-8bdf-4edb21fd18e3",
+      "name": "Message a model",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        0
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "2Lr41u23mu51snPu",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "output[0].content[0].text",
+        "options": {
+          "fileName": "test_plan.md"
+        }
+      },
+      "id": "c65c9364-0413-4d8f-b1e6-09858dc8d842",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "llama-3.3-70b-versatile",
+          "mode": "list",
+          "cachedResultName": "LLAMA-3.3-70B-VERSATILE"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are an expert QA Engineer. Review this generated Test Plan text:\n{{ $('Message a model').item.json.output[0].content[0].text }}\n\nGenerate a comprehensive suite of functional test cases based strictly on it. \nFormat your entire output as a valid CSV string using these exact columns: \"Test Case ID\",\"Module\",\"Description\",\"Pre-conditions\",\"Execution Steps\",\"Expected Result\",\"Priority\".\n\nCRITICAL: Output ONLY the raw CSV text rows. Do not wrap the text inside markdown code blocks (like ```csv). Do not add any conversational introductions or structural explanations. Start directly with the header row."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "store": false
+        }
+      },
+      "id": "d1035587-32e8-4de9-84c2-92e827500c3c",
+      "name": "Message a model1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        896,
+        0
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "2Lr41u23mu51snPu",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "output[0].content[0].text",
+        "options": {
+          "fileName": "test_cases.csv"
+        }
+      },
+      "id": "c41605c5-c4fb-4c91-8496-7b617f225714",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "llama-3.3-70b-versatile",
+          "mode": "list",
+          "cachedResultName": "LLAMA-3.3-70B-VERSATILE"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are an expert Automation Engineer specializing in Playwright. Review the functional test cases generated in the previous step:\n{{ $('Message a model1').item.json.output[0].content[0].text }}\n\nGenerate clean, well-structured JavaScript Playwright automation scripts for the primary functional scenarios described. Adhere to these implementation standards:\n- Use standard Page Object Model (POM) patterns where applicable.\n- Include proper element locator strategies using modern `page.getByRole` or robust CSS selectors.\n- Include meaningful assertions (`await expect(...)`).\n- Add appropriate async/await handlers and basic execution timeouts.\n\nCRITICAL: Output ONLY the raw JavaScript automation code. Do not wrap your response inside markdown blocks (like ```javascript). Do not write conversational text or introductory remarks. Start directly with the required imports."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "store": false
+        }
+      },
+      "id": "7f7919de-eac4-4a56-aacf-b7cccc7e5e05",
+      "name": "Message a model2",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1344,
+        0
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "2Lr41u23mu51snPu",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "output[0].content[0].text",
+        "options": {
+          "fileName": "automation_tests.js"
+        }
+      },
+      "id": "a519c750-5be6-43b8-8d5a-ce1f9624e618",
+      "name": "Convert to File2",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "test_plan",
+              "value": "={{ $('Convert to File').item.binary.data }}",
+              "type": "binary"
+            },
+            {
+              "id": "a2",
+              "name": "test_cases",
+              "value": "={{ $('Convert to File1').item.binary.data }}",
+              "type": "binary"
+            },
+            {
+              "id": "a3",
+              "name": "automation",
+              "value": "={{ $('Convert to File2').item.binary.data }}",
+              "type": "binary"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9aa995c6-0102-4abc-ba8b-f079a3eb82b7",
+      "name": "Collect Artifacts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1792,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "compress",
+        "binaryPropertyName": "test_plan,test_cases,automation",
+        "fileName": "STLC_Artifacts.zip"
+      },
+      "id": "5719219e-278f-4168-95dc-bb2f3d012587",
+      "name": "Compression",
+      "type": "n8n-nodes-base.compression",
+      "typeVersion": 1.1,
+      "position": [
+        2016,
+        0
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "returnBinary",
+        "completionTitle": "Your STLC artifacts are ready",
+        "completionMessage": "Download the ZIP containing your Test Plan, Test Cases, and Playwright scripts.",
+        "options": {}
+      },
+      "id": "a6764be4-e37f-4ab1-8ba4-b323185d3b37",
+      "name": "Download Artifacts",
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.5,
+      "position": [
+        2240,
+        0
+      ],
+      "webhookId": "8f9b74d6-8924-4148-9b2c-48d72cc4eba2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Convert to File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File2": {
+      "main": [
+        [
+          {
+            "node": "Collect Artifacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Artifacts": {
+      "main": [
+        [
+          {
+            "node": "Compression",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compression": {
+      "main": [
+        [
+          {
+            "node": "Download Artifacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "7965c72a-f65f-4a60-aca1-249ebd047bb0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3809fdeecd51556e99ab740fe416251615d7c00fb4a2381a6bb69205043d776e"
+  },
+  "nodeGroups": [],
+  "id": "E00cv5KCapyEeOS2",
+  "tags": [
+    {
+      "name": "learnAI",
+      "id": "kZgiuXXbR81Lc3P7",
+      "updatedAt": "2026-07-19T22:05:22.683Z",
+      "createdAt": "2026-07-19T22:05:22.683Z"
+    }
+  ]
+}
