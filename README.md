@@ -1,28 +1,50 @@
 # 🧪 AI Tester Blueprint Portfolio
 
-Welcome to my unified QA engineering and AI testing learning repository. This dashboard tracks my modular learning track for advanced, hallucination-free validation frameworks powered by local LLMs and structured prompt engineering.
+[![Modules](https://img.shields.io/badge/modules-6-blue?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/status-100%25_complete-brightgreen?style=for-the-badge)]()
+[![LLM](https://img.shields.io/badge/LLM-Ollama_|_Groq_|_OpenAI--compat-orange?style=for-the-badge)]()
+[![Framework](https://img.shields.io/badge/framework-RICE--POT_|_B.L.A.S.T.-purple?style=for-the-badge)]()
+
+A unified QA engineering and AI testing learning repository — 6 production-grade modules spanning prompt engineering, automated API testing, full-stack dashboards, and n8n AI agent orchestration.
+
+---
+
+## 📋 Quick Nav
+
+| | | |
+|---|---|---|
+| [📊 Portfolio Overview](#-portfolio-overview) | [📂 Module 01](#-module-01--ai-driven-test-plan-generator) | [📂 Module 04](#-module-04--jira-qa-test-plan-agent) |
+| [🛠️ Architectures](#-architectures) | [📂 Module 02](#-module-02--ai-driven-test-case-generator) | [📂 Module 05](#-module-05--test-strategy-builder-agent) |
+| [🚀 Getting Started](#-getting-started) | [📂 Module 03](#-module-03--playwright-api-test-framework) | [📂 Module 06](#-module-06--n8n-ai-orchestration-agents) |
 
 ---
 
 ## 📊 Portfolio Overview
 
-| Module | Status | Engine | Framework | Input | Output |
-|:-------|:------:|:------:|:---------:|:-----:|:------:|
-| **01** — AI-Driven Test Plan Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | Restful Booker API Spec | `Final_Test_Plan.md` |
-| **02** — AI-Driven Test Case Generator | 🟢 **Complete** | `qwen2.5-coder:14b` via Ollama | RICE-POT + Pramod Dutta Ruleset | VWO Login Dashboard PRD | `Final_Test_Cases.csv` + `Final_Test_Cases.md` |
-| **03** — Playwright API Test Framework | 🟢 **Complete** | Playwright + TypeScript | RICE-POT + Controller Pattern + Anti-Hallucination Audit | `skill.md` specification | `playwright_api_framework/` |
-| **04** — Jira QA Test Plan Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `output/test-plan-*.md` + Dashboard |
-| **05** — Test Strategy Builder Agent | 🟢 **Complete** | `openai/gpt-oss-120b` via Groq | B.L.A.S.T. Framework + Architecture SOPs | JIRA Issue ADF description | `test-strategy-*.md` + Dashboard |
-| **06** — n8n AI Orchestration Agents | 🟢 **Complete** | Ollama (`qwen2.5-coder:7b`) + Groq (`llama-3.3-70b`) | n8n Agents & LangChain | Jira / User Prompts | JSON Blueprints + Sheets DB |
+<details open>
+<summary><b>Click to expand: Full module comparison table</b></summary>
+
+| # | Module | Engine | Approach | Input | Output | Type |
+|:-:|:-------|:------:|:---------|:-----|:------|:----:|
+| [01](#-module-01--ai-driven-test-plan-generator) | Test Plan Generator | Ollama `qwen2.5-coder:14b` | RICE-POT + Anti-Hallucination Rules | API Spec | `Final_Test_Plan.md` | 🧠 Prompt Pipeline |
+| [02](#-module-02--ai-driven-test-case-generator) | Test Case Generator | Ollama `qwen2.5-coder:14b` | RICE-POT + Anti-Hallucination Rules | VWO PRD | `Final_Test_Cases.csv/.md` | 🧠 Prompt Pipeline |
+| [03](#-module-03--playwright-api-test-framework) | Playwright API Framework | Playwright + TypeScript | Controller Pattern + Audit | `skill.md` spec | `playwright_api_framework/` | 📦 Code Framework |
+| [04](#-module-04--jira-qa-test-plan-agent) | Jira QA Agent | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-plan-*.md` | 🌐 Full-Stack App |
+| [05](#-module-05--test-strategy-builder-agent) | Strategy Builder | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-strategy-*.md` | 🌐 Full-Stack App |
+| [06](#-module-06--n8n-ai-orchestration-agents) | n8n Agents | Ollama + Groq + OpenAI | n8n Agents + LangChain + Pipeline | Jira / PDF / Chat | JSON Blueprints + Sheets + ZIP | 🤖 n8n Orchestration |
+
+</details>
 
 ---
 
-## 🛠️ Common Architecture
+## 🛠️ Architectures
+
+Two architectural frameworks power the portfolio, evolving from prompt-only to full-stack to orchestrated pipelines.
 
 <details>
-<summary><b>🔍 Click to expand: RICE-POT Prompt Engineering Framework</b></summary>
+<summary><b>🔍 RICE-POT — Prompt Engineering Framework</b> <code>Modules 01–03</code></summary>
 
-Every module follows the **RICE-POT** deterministic pipeline to ensure high-fidelity extraction without generative AI inaccuracies:
+Deterministic prompt pipeline ensuring high-fidelity extraction without generative AI inaccuracies.
 
 | Letter | Component | Purpose |
 |:------:|:----------|:--------|
@@ -33,57 +55,61 @@ Every module follows the **RICE-POT** deterministic pipeline to ensure high-fide
 | **P** | **Parameters** | Quality, accuracy, and style constraints |
 | **O** | **Output** | The exact artifact and format to produce |
 | **T** | **Tone** | Technical, precise, enterprise-grade |
-
 </details>
 
 <details>
-<summary><b>🛡️ Click to expand: Anti-Hallucination Guardrails</b></summary>
+<summary><b>🛡️ Anti-Hallucination Guardrails</b> <code>Modules 01–03</code></summary>
 
-An audit layer driven by strict verification rulesets authored by **Pramod Dutta (Principal SDET)** ensures:
+Audit layer by **Pramod Dutta (Principal SDET)** enforcing traceable, deterministic AI output:
 
-- **Zero invented features** — no made-up APIs, error codes, or UI elements
-- **Full traceability** — every assertion maps back to provided input
-- **Honest fallbacks** — `"Insufficient information to determine"` when data is missing
-- **Confidence labeling** — inferred details marked `"Inference (low confidence)"`
-- **Deterministic output** — same input always produces same output
+| Rule | Description |
+|:-----|:------------|
+| **Zero invented features** | No made-up APIs, error codes, or UI elements |
+| **Full traceability** | Every assertion maps back to provided input |
+| **Honest fallbacks** | `"Insufficient information to determine"` when data is missing |
+| **Confidence labeling** | Inferred details marked `"Inference (low confidence)"` |
+| **Deterministic output** | Same input always produces same output |
 
 Each module runs a **4-step self-validation audit**: Verified Facts → Missing/Unknown Info → Generated Output → Self-Validation Check.
-
 </details>
 
 <details>
-<summary><b>🚀 Click to expand: B.L.A.S.T. System Architecture Framework</b></summary>
+<summary><b>🚀 B.L.A.S.T. — System Architecture Framework</b> <code>Modules 04–05</code></summary>
 
-The **B.L.A.S.T.** system design framework governs how the testing engines, server proxies, and visual rendering cards operate under modular, decoupled boundaries:
+Decoupled full-stack design for test engines, proxy servers, and visual rendering:
 
 | Letter | Component | Purpose |
 |:------:|:----------|:--------|
-| **B** | **Boundaries** | Decoupling presentation layers from proxy controllers (e.g., React UI + Express Backend). |
-| **L** | **Links** | Standardizing secure API credential waterfalls and real-time connection handshakes. |
-| **A** | **Assets** | Serving clean, formatted rendering panes (e.g., markdown lists, preconditions tables). |
-| **S** | **Storage** | Syncing persistent user overlays without local token leakages. |
-| **T** | **Triggers** | Automating dev/prod bootstrap compilation routes concurrently. |
+| **B** | **Boundaries** | Decoupling presentation layers from proxy controllers (React UI + Express Backend) |
+| **L** | **Links** | Standardizing secure API credential waterfalls and connection handshakes |
+| **A** | **Assets** | Serving clean, formatted rendering panes (markdown lists, tables) |
+| **S** | **Storage** | Syncing persistent user overlays without local token leakages |
+| **T** | **Triggers** | Automating dev/prod bootstrap compilation routes concurrently |
+</details>
 
+<details>
+<summary><b>🤖 n8n Agent & Pipeline Patterns</b> <code>Module 06</code></summary>
+
+Three orchestration patterns for AI-driven STLC automation:
+
+| Pattern | Workflow | Description |
+|:--------|:--------:|:------------|
+| **Chat Agent** | 6.1 | Reactive agent with memory, domain guardrails, and anti-apology enforcement |
+| **Tool Agent** | 6.2 | Agent with Jira (read) + Google Sheets (write) tools following a mandatory 5-phase workflow |
+| **Linear Pipeline** | 6.3 | Stateless DAG: Form → PDF → AI Generation (3 stages) → ZIP → Download |
 </details>
 
 ---
 
 ## 📂 Modules
 
-<details open>
-<summary><b>📋 Module 01 — AI-Driven Test Plan Generator</b> <code>01_test_plan_generator/</code></summary>
+### 📦 Module 01 — AI-Driven Test Plan Generator
+**[`01_test_plan_generator/`](./01_test_plan_generator/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![LLM](https://img.shields.io/badge/LLM-Ollama_14b-orange)]()
 
-<br>
+Parses a Restful Booker API spec into a production-grade, hallucination-free test plan.
 
-Parses raw project documentation (Restful Booker API spec) into a production-grade, hallucination-free test plan.
-
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| Data Extraction | 🟢 **100% Complete** | RICE-POT |
-| Anti-Hallucination Audit | 🟢 **Passed** | Pramod Dutta Ruleset |
-| Target Artifact Generated | 🟢 **Ready** — `Final_Test_Plan.md` | Standard STLC |
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
 
 ```text
 01_test_plan_generator/
@@ -96,24 +122,25 @@ Parses raw project documentation (Restful Booker API spec) into a production-gra
     └── Final_Test_Plan.md
 ```
 
-👉 [View module details →](./01_test_plan_generator/README.md)
+| Milestone | Status |
+|:----------|:------:|
+| Data Extraction | 🟢 100% Complete |
+| Anti-Hallucination Audit | 🟢 Passed |
+| Artifact Generated | 🟢 `Final_Test_Plan.md` |
+
+[→ View details](./01_test_plan_generator/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
-<details open>
-<summary><b>📋 Module 02 — AI-Driven Test Case Generator</b> <code>02_test_case_generator/</code></summary>
+---
 
-<br>
+### 📦 Module 02 — AI-Driven Test Case Generator
+**[`02_test_case_generator/`](./02_test_case_generator/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![LLM](https://img.shields.io/badge/LLM-Ollama_14b-orange)]()
 
-Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, hallucination-free test cases.
+Parses a VWO Login Dashboard PRD into 20 traceable, hallucination-free test cases.
 
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| Data Extraction | 🟢 **100% Complete** | RICE-POT |
-| Anti-Hallucination Audit | 🟢 **Passed** | Pramod Dutta Ruleset |
-| Target Artifact Generated | 🟢 **Ready** — `Final_Test_Cases.csv` + `Final_Test_Cases.md` | RICE-POT + STLC |
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
 
 ```text
 02_test_case_generator/
@@ -128,24 +155,25 @@ Parses a Product Requirements Document (VWO Login Dashboard) into 20 traceable, 
     └── Final_Test_Cases.md
 ```
 
-👉 [View module details →](./02_test_case_generator/README.md)
+| Milestone | Status |
+|:----------|:------:|
+| Data Extraction | 🟢 100% Complete |
+| Anti-Hallucination Audit | 🟢 Passed |
+| Artifact Generated | 🟢 `Final_Test_Cases.csv` + `.md` |
+
+[→ View details](./02_test_case_generator/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
-<details open>
-<summary><b>📋 Module 03 — Playwright API Test Framework</b> <code>03_playwright_api_framework/</code></summary>
+---
 
-<br>
+### 📦 Module 03 — Playwright API Test Framework
+**[`03_playwright_api_framework/`](./03_playwright_api_framework/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Stack](https://img.shields.io/badge/stack-Playwright_|_TypeScript-blue)]()
 
-Enterprise-grade, type-safe API testing framework built on Playwright's native `APIRequestContext` with zero external HTTP clients. Scaffolded via the RICE-POT prompt framework using a `skill.md` specification and audited against the Anti-Hallucination Ruleset.
+Enterprise-grade, type-safe API testing framework with zero external HTTP clients, fixture-based auth, and CI-ready sharding.
 
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| RICE-POT Scaffolding | 🟢 **100% Complete** | RICE-POT + `skill.md` |
-| Anti-Hallucination Audit | 🟢 **Passed** | Pramod Dutta Ruleset |
-| Framework Implementation | 🟢 **Ready** — `playwright_api_framework/` | Controller Pattern + Playwright |
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
 
 ```text
 03_playwright_api_framework/
@@ -169,141 +197,140 @@ Enterprise-grade, type-safe API testing framework built on Playwright's native `
         └── smoke.spec.ts        # Plumbing verification
 ```
 
-**Key highlights:**
+| Milestone | Status |
+|:----------|:------:|
+| RICE-POT Scaffolding | 🟢 100% Complete |
+| Anti-Hallucination Audit | 🟢 Passed |
+| Framework Implementation | 🟢 Ready |
 
-- **Zero `any` types** — every request/response has a dedicated interface
-- **Fixture-based auth** — bearer token injected per-test via custom Playwright fixture
-- **Auto-failure logging** — full request/response JSON attached to HTML report on failure
-- **Parallel-safe** — `fullyParallel: true`, no shared state between tests
-- **CI-ready** — 4-shard matrix with npm cache, secrets, and HTML report artifact
+**Highlights:**
+- Zero `any` types — every request/response has a dedicated interface
+- Fixture-based auth — bearer token injected per-test via custom fixture
+- Auto-failure logging — full request/response JSON on failure
+- Parallel-safe — `fullyParallel: true`, no shared state
+- CI-ready — 4-shard matrix with npm cache, secrets, HTML report artifact
 
-👉 [View module details →](./03_playwright_api_framework/README.md)
+[→ View details](./03_playwright_api_framework/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
-<details open>
-<summary><b>📋 Module 04 — Jira QA Test Plan Agent</b> <code>04_jira_ai_agent/</code></summary>
+---
 
-<br>
+### 📦 Module 04 — Jira QA Test Plan Agent
+**[`04_jira_ai_agent/`](./04_jira_ai_agent/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Stack](https://img.shields.io/badge/stack-React_|_Express_|_Groq-blue)]()
 
-On-demand Jira issue fetcher and anti-hallucination QA test plan compiler. Reorganized into a decoupled full-stack architecture (Vite + React frontend and Express server proxy) with secure local environment variables, visual screenshots walkthrough, and connection diagnostic handshakes.
+On-demand Jira issue fetcher and anti-hallucination QA test plan compiler with a glassmorphic dark dashboard.
 
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| Data Normalization (ADF to Text) | 🟢 **100% Complete** | Jira REST API v3 Client |
-| Anti-Hallucination Audit | 🟢 **Passed** | B.L.A.S.T. framework prompts |
-| Full-Stack Dashboard Implementation | 🟢 **Ready** — Vite React + Express | Glassmorphic Dark Design |
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
 
 ```text
 04_jira_ai_agent/
-├── backend/                             # Express Server Module
-│   ├── server.js                        # CORS proxy and routes mapping
-│   └── src/services/                    # Jira, Groq, & Test Plan services
-├── client/                              # Decoupled Vite React Client
-│   ├── src/                             # App.jsx viewport and index.css
-│   └── vite.config.js                   # Client dev build proxy server mapping
-├── docs/                                # BLAST guidelines and Architecture SOPs
-│   ├── B.L.A.S.T.md                     # BLAST Protocol standards specs
-│   ├── images/                          # Dashboard screenshots
-│   └── architecture/                    # Jira fetch & Anti-hallucination SOPs
-├── .env.example                         # Pristine configuration template
-├── .gitignore                           # Exclusions matrix
-└── README.md                            # Dedicated setup guide manual
+├── backend/                           # Express Server Module
+│   ├── server.js                      # CORS proxy and routes
+│   └── src/services/                  # Jira, Groq, & Test Plan services
+├── client/                            # Vite React Client
+│   ├── src/                           # App.jsx + index.css
+│   └── vite.config.js                 # Dev proxy mapping
+├── docs/
+│   ├── B.L.A.S.T.md                   # Architecture specs
+│   ├── images/                        # Dashboard screenshots
+│   └── architecture/                  # Jira fetch & SOPs
+├── .env.example
+├── .gitignore
+└── README.md
 ```
 
-**Key highlights:**
+| Milestone | Status |
+|:----------|:------:|
+| Data Normalization (ADF to Text) | 🟢 100% Complete |
+| Anti-Hallucination Audit | 🟢 Passed |
+| Full-Stack Dashboard | 🟢 Vite React + Express |
 
-- **Decoupled Architecture** — Vite SPA frontend mapping proxy requests to Express service modules
-- **Interactive Viewport** — Centered glassmorphic error panel overlays and live connection state badging
-- **Security Exclusion Matrix** — Strict `.gitignore` boundaries blocking env configs and local temp files
-- **Defensive Filtering** — Trim boundaries avoiding trailing empty bullet points in exported files
+**Highlights:** Decoupled architecture, glassmorphic UI, strict `.gitignore` boundaries, defensive filtering.
 
-👉 [View module details →](./04_jira_ai_agent/README.md)
+[→ View details](./04_jira_ai_agent/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
-<details open>
-<summary><b>📋 Module 05 — Test Strategy Builder Agent</b> <code>05_test_strategy_builder/</code></summary>
+---
 
-<br>
+### 📦 Module 05 — Test Strategy Builder Agent
+**[`05_test_strategy_builder/`](./05_test_strategy_builder/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Stack](https://img.shields.io/badge/stack-React_|_Express_|_Groq-blue)]() &nbsp; [![Deploy](https://img.shields.io/badge/deployed-Vercel-success)]()
 
-On-demand Jira issue parser and boardroom-ready Quality Assurance Test Strategy compiler. Built on a decoupled full-stack architecture (Vite + React frontend and Express server proxy) with secure local environment variables, diagnostic connection checks, and a live production cloud deployment on Vercel.
+On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with Vercel production deployment.
 
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| Data Ingestion & Discovery Questionnaire | 🟢 **100% Complete** | Jira REST API v3 Client |
-| Anti-Hallucination Schemas | 🟢 **Passed** | B.L.A.S.T. Framework prompts |
-| Glassmorphic Dark UI & GFM Rendering | 🟢 **Ready** — Vite React + Express | remark-gfm parser + settings |
-| Production Cloud Deployment | 🟢 **Deployed** | Vercel Serverless hosting |
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
 
 ```text
 05_test_strategy_builder/
-├── server/                              # Express Backend Proxy
-│   └── server.js                        # CORS proxy, Jira fetcher & Groq executor
-├── client/                              # Decoupled Vite React Client
-│   ├── vite.config.js                   # Client dev proxy server
-│   └── src/                             # React Components (App.jsx & styling)
-├── docs/                                # BLAST guidelines and Architecture Constitution
-│   ├── LLM.md                           # Constitutional data contract shapes
-│   ├── findings.md                      # Port configurations & key isolation findings
-│   ├── progress.md                      # Chronological sprint milestones
-│   ├── requirements_discovery.md        # Completed requirements questionnaire
-│   └── task_plan.md                     # Roadmap checklist
-├── vercel.json                          # Vercel deployment descriptor config
-├── .env.example                         # Pristine environment configuration template
-├── .gitignore                           # Exclusions matrix
-└── README.md                            # Comprehensive module guide manual
+├── server/                            # Express Backend
+│   └── server.js                      # CORS proxy, Jira fetcher, Groq executor
+├── client/                            # Vite React Client
+│   ├── vite.config.js
+│   └── src/
+├── docs/
+│   ├── LLM.md, findings.md
+│   ├── progress.md, task_plan.md
+│   └── requirements_discovery.md
+├── vercel.json                        # Deployment descriptor
+├── .env.example
+├── .gitignore
+└── README.md
 ```
 
-**Key highlights:**
+| Milestone | Status |
+|:----------|:------:|
+| Data Ingestion & Discovery | 🟢 100% Complete |
+| Anti-Hallucination Schemas | 🟢 Passed |
+| Glassmorphic UI + GFM Rendering | 🟢 Ready |
+| Production Deployment | 🟢 Vercel |
 
-- **Decoupled Architecture** — Vite SPA frontend mapping proxy requests to Express service modules.
-- **GFM Table Support** — Full Integration of `remark-gfm` to render tech stack tool mappings and risk mitigations inside markdown tables.
-- **Vercel Serverless Hosting** — Production hosted at `https://05teststrategybuilder.vercel.app`.
-- **Zero-CORS Client Communication** — Secure transit of runtime token overrides via custom request headers.
+**Highlights:** `remark-gfm` table rendering, Vercel serverless, zero-CORS token transit via custom headers.
 
-👉 [View module details →](./05_test_strategy_builder/README.md)
+[→ View details](./05_test_strategy_builder/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
+---
+
+### 📦 Module 06 — n8n AI Orchestration Agents
+**[`06_AI_Agents_n8n/`](./06_AI_Agents_n8n/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Ollama](https://img.shields.io/badge/Ollama-qwen2.5--coder:7b-orange)]() &nbsp; [![Groq](https://img.shields.io/badge/Groq-llama--3.3--70b-purple)]() &nbsp; [![OpenAI](https://img.shields.io/badge/OpenAI--compat-llama--3.3--70b-green)]()
+
+3 production-grade n8n automation blueprints for STLC — from local guardrails to cloud tools to a full PRD-to-artifacts pipeline.
+
 <details open>
-<summary><b>📋 Module 06 — n8n AI Orchestration Agents</b> <code>06_AI_Agents_n8n/</code></summary>
-
-<br>
-
-Advanced AI agent orchestrations and LangChain pipeline blueprints managed via n8n. Features local LLM guardrails (Ollama) and cloud agent tools (Groq + Jira + Google Sheets).
-
-**Milestones:**
-
-| Milestone | Status | Framework |
-|:----------|:------:|:---------:|
-| Local Ollama QA Agent | 🟢 **100% Complete** | Anti-Apology / Refusal Guardrails |
-| Jira PRD to Sheets Agent | 🟢 **100% Complete** | Jira REST API + Google Sheets integrations |
-| Interactive Documentation | 🟢 **Ready** — [README.md](./06_AI_Agents_n8n/README.md) | Collapsible empirical execution proofs |
+<summary><b>Click to expand: Workflow catalog</b></summary>
 
 ```text
 06_AI_Agents_n8n/
-├── 6.1_local_ollama_qa_agent.json          # Local Ollama QA Agent blueprint
-├── 6.2_Read_PRD_TestCases_Excel.json       # Jira PRD to Google Sheets generator
-├── README.md                               # Interactive catalog with inline proofs
-└── images/                                 # Proof screenshots
-    ├── guardrail_refusal_proof.png
-    ├── in_scope_execution_proof.png
-    ├── jira_prd_sheets_workflow_proof.png
-    └── jira_prd_sheets_execution_proof.png
+├── 6.1_local_ollama_qa_agent.json          # Chat agent with guardrails
+├── 6.2_jira_prd_to_google_sheets.json      # Jira → Google Sheets
+├── 6.3_stlc_artifact_generator.json        # PRD PDF → 3 artifacts
+├── README.md                               # Interactive catalog
+├── images/                                 # 6 proof screenshots
+└── outputs/                                # Execution artifacts
+    ├── Product_Requirements_Document_VWO.com.pdf
+    └── 6.3_stlc_artifacts/
+        ├── test_plan.md
+        ├── test_cases.csv
+        └── automation_tests.js
 ```
 
-**Key highlights:**
+| # | Blueprint | LLM | Pattern | Nodes |
+|:-:|:----------|:---:|:--------|:----:|
+| [6.1](./06_AI_Agents_n8n/6.1_local_ollama_qa_agent.json) | Local QA Chat Agent | Ollama `qwen2.5-coder:7b` | Chat Agent + Guardrails | 4 |
+| [6.2](./06_AI_Agents_n8n/6.2_jira_prd_to_google_sheets.json) | Jira → Google Sheets | Groq `llama-3.3-70b` | Tool Agent + 5-phase workflow | 6 |
+| [6.3](./06_AI_Agents_n8n/6.3_stlc_artifact_generator.json) | PRD → Plan → Cases → Scripts | OpenAI `llama-3.3-70b` | Linear Pipeline (3 AI stages) | 11 |
 
-- **Local Guardrails (6.1)**: Strictly enforces an anti-apology block using local `qwen2.5-coder:7b` via Ollama, immediately returning corporate refusal strings for out-of-scope queries.
-- **Cross-Platform Integration (6.2)**: Integrates Jira Software Cloud with Google Sheets, converting user-specified Jira keys to structured test case sheets in real-time.
-- **Rich Verification Documentation**: Inline execution screenshots and live spreadsheet target links directly inside collapsible sections.
+**Highlights:**
+- **6.1** — Anti-apology guardrails, out-of-scope refusal with fixed string
+- **6.2** — Jira + Google Sheets integration, mandatory 5-phase agent workflow
+- **6.3** — Upload PDF → AI generates Test Plan + CSV cases + Playwright scripts → ZIP download
+- All 3 verified end-to-end with proof screenshots and generated artifacts
 
-👉 [View module details →](./06_AI_Agents_n8n/README.md)
+[→ View full catalog](./06_AI_Agents_n8n/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
@@ -311,54 +338,26 @@ Advanced AI agent orchestrations and LangChain pipeline blueprints managed via n
 
 ## 🚀 Getting Started
 
+<details open>
+<summary><b>Click to expand: Prerequisites & quick-start per module</b></summary>
+
 ### Prerequisites
 
-- [Ollama](https://ollama.ai/) installed locally
-- `qwen2.5-coder:14b` model pulled (`ollama pull qwen2.5-coder:14b`)
-- [Node.js](https://nodejs.org/) 18+ (for Module 03)
+- [Ollama](https://ollama.ai/) — pull `qwen2.5-coder:14b` (`ollama pull qwen2.5-coder:14b`)
+- [Node.js](https://nodejs.org/) 18+
 - Target project documentation (PRD, API spec, screenshots)
 
-### Running a Module
+### Module Quick-Start
 
-**Modules 01–02** are **prompt engineering pipelines** — no code to run:
+| Module | Type | Quick Command |
+|:-------|:----:|:--------------|
+| **01–02** | 🧠 Prompt Pipeline | Clean source docs → Prompt LLM → Validate → Review `output/` |
+| **03** | 📦 Code Framework | `npm install && cp .env.example .env && npm test` |
+| **04** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
+| **05** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
+| **06** | 🤖 n8n Suite | Import JSON → Configure credentials → Trigger via Chat or Form |
 
-1. **Clean** your source documentation into `docs/Source_Context.md`
-2. **Prompt** the local LLM using the RICE-POT template (included in each module's README)
-3. **Validate** the output against `docs/Anti_Hallucinations_Rules.md`
-4. **Review** the artifact in `output/`
-
-**Module 03** is a **code framework** — run tests directly:
-
-```bash
-cd 03_playwright_api_framework/playwright_api_framework
-npm install
-cp .env.example .env        # Fill in your environment values
-npm test                    # Run all tests
-```
-
-**Module 04** is a **full-stack application** — run dev servers concurrently:
-
-```bash
-cd 04_jira_ai_agent
-npm install
-cp .env.example .env        # Fill in your environment values
-npm run dev                 # Start React and Express concurrently
-```
-
-**Module 05** is a **full-stack application** — run dev servers concurrently:
-
-```bash
-cd 05_test_strategy_builder
-npm install
-cp .env.example .env        # Fill in your environment values
-npm run dev                 # Start React and Express concurrently
-```
-
-**Module 06** is an **n8n orchestration suite** — run via n8n:
-
-1. Import the desired workflow JSON (`6.1_local_ollama_qa_agent.json` or `6.2_Read_PRD_TestCases_Excel.json`) into your local or cloud n8n instance.
-2. Configure API credentials for Ollama (local host), Groq, Jira Software Cloud, and Google Sheets.
-3. Trigger execution using n8n's Chat node viewport.
+</details>
 
 ---
 

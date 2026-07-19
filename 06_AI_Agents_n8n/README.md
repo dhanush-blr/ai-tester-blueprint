@@ -1,93 +1,156 @@
 # n8n AI Orchestration Agents
 
-This folder houses localized, advanced AI Agent orchestrations and LangChain pipeline blueprints managed via n8n.
+> **3 automation blueprints** for Software Testing Life Cycle (STLC), powered by n8n, LangChain, and multi-LLM orchestration.
 
-## 🤖 06_AI_Agents_n8n Blueprint Catalog
+[![Workflows](https://img.shields.io/badge/workflows-3-blue)](#-blueprint-catalog)
+[![Ollama](https://img.shields.io/badge/ollama-qwen2.5--coder:7b-orange)](#1-local-ollama-qa-agent-61_local_ollama_qa_agentjson)
+[![Groq](https://img.shields.io/badge/groq-llama--3.3--70b-purple)](#2-jira-prd-to-google-sheets-test-case-generator-62_jira_prd_to_google_sheetsjson)
+[![OpenAI](https://img.shields.io/badge/openai--compatible-llama--3.3--70b-green)](#3-stlc-artifact-generator-63_stlc_artifact_generatorjson)
 
-### 1. Local Ollama QA Agent (`6.1_local_ollama_qa_agent.json`)
-- **Core Identity:** Senior QA and Test Automation Expert (15+ years experience).
-- **Local LLM Engine:** Ollama (`qwen2.5-coder:7b`).
-- **Parameter Tuning:** Temperature: `0`, Context Window (`Num Ctx`): `8192`.
-- **Guardrail Constraints:** Zero-exception software testing domain alignment. Features an explicit anti-apology enforcement rule that blocks conversational filler and forces a verbatim corporate policy refusal block for out-of-scope prompts.
-- **Memory State:** Sliding Window Buffer Memory.
+---
 
-<details>
-<summary><b>📊 Click to Expand: Empirical Execution & Guardrail Proofs</b></summary>
+## 📑 Table of Contents
 
-##### Out-of-Scope Guardrail Interception
-When an out-of-scope query (e.g., weather data) is processed, the agent bypasses conversational apologies and strictly returns the mandated corporate string:
-![Guardrail Interception Proof](images/guardrail_refusal_proof.png)
+<details open>
+<summary><b>📋 All Workflows</b></summary>
 
-##### In-Scope Domain Expertise Processing
-When a QA-specific concept query (e.g., Regression Testing) is handled, the agent swiftly surfaces a modular, structured execution guide:
-![In-Scope Domain Execution Proof](images/in_scope_execution_proof.png)
+| # | Workflow | LLM | Type | Status |
+|---|----------|-----|------|--------|
+| [1](##-1-local-ollama-qa-agent) | Local Ollama QA Agent | Ollama `qwen2.5-coder:7b` | Chat Agent | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
+| [2](##-2-jira-prd-to-google-sheets-test-case-generator) | Jira PRD → Google Sheets | Groq `llama-3.3-70b` | Tool Agent | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
+| [3](##-3-stlc-artifact-generator) | STLC Artifact Generator | OpenAI `llama-3.3-70b` | Pipeline | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
 
 </details>
 
 ---
 
-### 2. Jira PRD to Google Sheets Test Case Generator (`6.2_Read_PRD_TestCases_Excel.json`)
-- **Core Identity:** Senior QA Automation Architect specializing in test engineering agent frameworks.
-- **LLM Engine:** Groq Cloud (`llama-3.3-70b-versatile`).
-- **Connected Integrations & Tools:**
-  - **Jira Software Cloud Integration:** Employs the `Fetch PRD by ticket` tool to automatically retrieve issue payloads (Summary/Description) from target Jira keys parsed from the user chat.
-  - **Google Sheets Integration:** Employs the `Append or update row in sheet` tool to serialize generated test cases as structured rows in the centralized spreadsheet.
-  - **Active Spreadsheet Target:** [KAN PRD Test cases Google Sheet](https://docs.google.com/spreadsheets/d/19bPRiR3mLkfq0qDtqN2cNLhxV4vUKEvgcP--Y_xxlxc/edit?usp=sharing)
-- **Mandatory Workflow Sequence:**
-  1. **Phase 1: Extraction & Key Verification:** Parses and isolates target issue keys (e.g. `PROJ-101`) from input messages.
-  2. **Phase 2: Jira Data Retrieval:** Queries Jira API to extract core requirement definitions.
-  3. **Phase 3: Test Case Engineering:** Generates detailed test suites containing scenario definitions, steps, preconditions, priority, and expected results.
-  4. **Phase 4: Spreadsheet Serialization:** Iterates and appends each generated case as a new row in the tracking sheet.
-  5. **Phase 5: Chat Reporting:** Displays a high-level markdown summary table of generated test scenarios.
-- **Memory State:** Sliding Window Buffer Memory.
+## 🤖 Blueprint Catalog
+
+---
 
 <details>
-<summary><b>📊 Click to Expand: Empirical Execution & Spreadsheet Logging Proofs</b></summary>
+<summary><h3>1. Local Ollama QA Agent</h3></summary>
 
-##### n8n AI Agent Workflow Execution
-The visual execution path in n8n showcases the inputs, Groq chat model invocation, memory lookup, and tool orchestration:
-![Jira PRD to Sheets Workflow](images/jira_prd_sheets_workflow_proof.png)
+**File:** `6.1_local_ollama_qa_agent.json`
 
-##### Google Sheets Output Record Generation
-The generated test cases are successfully serialized and logged into the target Google Sheets tracking sheet:
-![Google Sheets Test Cases Log](images/jira_prd_sheets_execution_proof.png)
+| Attribute | Value |
+|-----------|-------|
+| **Identity** | Senior QA & Test Automation Expert (15+ yrs) |
+| **LLM** | Ollama — `qwen2.5-coder:7b` |
+| **Temp / Context** | `0` / `8192` tokens |
+| **Memory** | Sliding Window Buffer |
+| **Guardrail** | Anti-apology enforcement — out-of-scope queries get a fixed refusal string instead of conversational filler |
 
+<details>
+<summary><b>📊 Execution & Guardrail Proofs</b></summary>
+
+###### Out-of-Scope Interception
+![Guardrail Refusal](images/guardrail_refusal_proof.png)
+
+###### In-Scope Domain Response
+![In-Scope Execution](images/in_scope_execution_proof.png)
+
+</details>
 </details>
 
 ---
 
-### 3. STLC Artifact Generator (`6.3_STLC_n8n_Agent.json`)
-- **Core Identity:** Multi-stage STLC pipeline that ingests a PRD PDF and produces 3 artifacts: Test Plan, Test Cases, and Playwright automation scripts.
-- **LLM Engine:** OpenAI-compatible endpoint (`llama-3.3-70b-versatile`).
-- **Trigger:** Web form with a file upload field for PRD PDF.
-- **Pipeline Stages:**
-  1. **Stage 1 — Test Plan Generation:** AI acts as an expert QA Manager, analyzes the PRD text, and generates a comprehensive Test Plan including Scope, Exclusions, Test Strategy, and Risk Analysis. Output is saved as `test_plan.md`.
-  2. **Stage 2 — Test Case Generation:** AI acts as an expert QA Engineer, reviews the generated Test Plan, and produces a CSV suite of functional test cases with columns: Test Case ID, Module, Description, Pre-conditions, Execution Steps, Expected Result, Priority. Output is saved as `test_cases.csv`.
-  3. **Stage 3 — Playwright Script Generation:** AI acts as an expert Automation Engineer, reviews the test cases, and generates Playwright JS automation scripts using POM patterns, `page.getByRole` locators, and `await expect(...)` assertions. Output is saved as `automation_tests.js`.
-- **Artifact Delivery:** All 3 files are collected, compressed into `STLC_Artifacts.zip`, and served as a downloadable binary via a completion form.
-- **Memory State:** Stateless (linear pipeline, no agent loop).
-- **Input Used:** [VWO.com PRD PDF](../06_AI_Agents_n8n/outputs/Product_Requirements_Document_VWO.com.pdf)
+<details>
+<summary><h3>2. Jira PRD to Google Sheets Test Case Generator</h3></summary>
+
+**File:** `6.2_jira_prd_to_google_sheets.json`
+
+| Attribute | Value |
+|-----------|-------|
+| **Identity** | Senior QA Automation Architect |
+| **LLM** | Groq Cloud — `llama-3.3-70b-versatile` |
+| **Memory** | Sliding Window Buffer |
+| **Integrations** | Jira (read), Google Sheets (write) |
+| **Spreadsheet** | [KAN PRD Test Cases](https://docs.google.com/spreadsheets/d/19bPRiR3mLkfq0qDtqN2cNLhxV4vUKEvgcP--Y_xxlxc/edit?usp=sharing) |
+
+**Mandatory 5-Phase Workflow:**
+
+```
+Phase 1: Extract Jira key from chat
+       ↓
+Phase 2: Fetch PRD from Jira
+       ↓
+Phase 3: Generate test cases via LLM
+       ↓
+Phase 4: Append rows to Google Sheets
+       ↓
+Phase 5: Return markdown summary to user
+```
 
 <details>
-<summary><b>📊 Click to Expand: Empirical Execution & Generated Artifacts</b></summary>
+<summary><b>📊 Execution & Spreadsheet Proofs</b></summary>
 
-##### Generated Test Plan (`test_plan.md`)
-Comprehensive STLC Test Plan covering VWO features (A/B testing, heatmaps, personalization), with Scope, Exclusions, Risk Analysis, Test Strategy, and Environment setup — produced directly from the PRD PDF.
+###### n8n Workflow Trace
+![Jira to Sheets Workflow](images/jira_prd_sheets_workflow_proof.png)
 
-##### Generated Test Cases (`test_cases.csv`)
-16 test cases (VWO-001 to VWO-016) across 11 modules — including functional (A/B tests, multivariate, personalization), non-functional (performance, security, scalability), and UX (usability, accessibility, localization).
-
-| Sample | Module | Priority |
-|--------|--------|----------|
-| VWO-001 | Experimentation & Testing | High |
-| VWO-003 | Behavioral Insights | Medium |
-| VWO-005 | Personalization | High |
-| VWO-008 | Performance | Critical |
-| VWO-009 | Security | Critical |
-
-##### Generated Playwright Scripts (`automation_tests.js`)
-Structured POM-based Playwright tests with page classes for `LoginPage`, `ExperimentationPage`, `BehavioralInsightsPage`, and `PersonalizationPage` — using `page.getByRole` locators and `await expect(...)` assertions.
-
-→ **Output files:** [`outputs/6.3_stlc_artifacts/`](outputs/6.3_stlc_artifacts/)
+###### Google Sheets Output
+![Sheets Test Cases](images/jira_prd_sheets_execution_proof.png)
 
 </details>
+</details>
+
+---
+
+<details>
+<summary><h3>3. STLC Artifact Generator</h3></summary>
+
+**File:** `6.3_stlc_artifact_generator.json`
+
+| Attribute | Value |
+|-----------|-------|
+| **Identity** | Multi-stage STLC pipeline |
+| **LLM** | OpenAI-compatible — `llama-3.3-70b-versatile` |
+| **Trigger** | Web form with PDF upload |
+| **Memory** | Stateless (linear DAG) |
+| **Delivery** | `STLC_Artifacts.zip` download |
+
+**Pipeline Stages:**
+
+```
+[Form] → [Extract PDF] → [Generate Test Plan] → [Generate Test Cases] → [Generate Playwright Scripts] → [Zip] → [Download]
+```
+
+| Stage | Role | Prompt | Output |
+|-------|------|--------|--------|
+| 1 | QA Manager | Analyze PRD, produce Test Plan with Scope, Exclusions, Strategy, Risk | `test_plan.md` |
+| 2 | QA Engineer | Generate CSV test cases from Test Plan (ID, Module, Steps, Priority) | `test_cases.csv` |
+| 3 | Automation Engineer | Write Playwright JS using POM, `getByRole`, `expect` | `automation_tests.js` |
+
+**Execution Run (VWO.com PRD):**
+
+- **Input:** [VWO.com PRD PDF](outputs/Product_Requirements_Document_VWO.com.pdf)
+- **Output:** [`outputs/6.3_stlc_artifacts/`](outputs/6.3_stlc_artifacts/)
+  - `test_plan.md` — 10-section Test Plan
+  - `test_cases.csv` — 16 test cases across 11 modules
+  - `automation_tests.js` — POM Playwright scripts
+
+<details>
+<summary><b>📊 Execution Proofs</b></summary>
+
+###### Form Upload
+![STLC Form](images/stlc_form_submission_proof.png)
+
+###### Artifact Download
+![STLC Download](images/stlc_artifacts_download_proof.png)
+
+</details>
+</details>
+
+---
+
+## 🔧 Integration Matrix
+
+| Integration | Workflow 1 | Workflow 2 | Workflow 3 |
+|-------------|:---:|:---:|:---:|
+| Ollama (local) | ✅ | ❌ | ❌ |
+| Groq Cloud | ❌ | ✅ | ❌ |
+| OpenAI (compat) | ❌ | ❌ | ✅ |
+| Jira | ❌ | ✅ | ❌ |
+| Google Sheets | ❌ | ✅ | ❌ |
+| PDF Extraction | ❌ | ❌ | ✅ |
+| File Download | ❌ | ❌ | ✅ |
