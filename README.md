@@ -31,7 +31,7 @@ A unified QA engineering and AI testing learning repository — 6 production-gra
 | [03](#-module-03--playwright-api-test-framework) | Playwright API Framework | Playwright + TypeScript | Controller Pattern + Audit | `skill.md` spec | `playwright_api_framework/` | 📦 Code Framework |
 | [04](#-module-04--jira-qa-test-plan-agent) | Jira QA Agent | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-plan-*.md` | 🌐 Full-Stack App |
 | [05](#-module-05--test-strategy-builder-agent) | Strategy Builder | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-strategy-*.md` | 🌐 Full-Stack App |
-| [06](#-module-06--n8n-ai-orchestration-agents) | n8n Agents | Ollama + Groq + OpenAI | n8n Agents + LangChain + Pipeline | Jira / PDF / Chat | JSON Blueprints + Sheets + ZIP | 🤖 n8n Orchestration |
+| [06](#-module-06--n8n-ai-orchestration-agents) | n8n Agents | Ollama + Groq + OpenAI | n8n Agents + LangChain + Pipeline | Jira / PDF / Chat | JSON Blueprints + Sheets + ZIP + Jira Tickets | 🤖 n8n Orchestration |
 
 </details>
 
@@ -95,8 +95,9 @@ Three orchestration patterns for AI-driven STLC automation:
 | Pattern | Workflow | Description |
 |:--------|:--------:|:------------|
 | **Chat Agent** | 6.1 | Reactive agent with memory, domain guardrails, and anti-apology enforcement |
-| **Tool Agent** | 6.2 | Agent with Jira (read) + Google Sheets (write) tools following a mandatory 5-phase workflow |
+| **Tool Agent (read)** | 6.2 | Agent with Jira (read) + Google Sheets (write) tools following a mandatory 5-phase workflow |
 | **Linear Pipeline** | 6.3 | Stateless DAG: Form → PDF → AI Generation (3 stages) → ZIP → Download |
+| **Tool Agent (create)** | 6.4 | Agent with Jira (create) tool — raw chat → formatted bug ticket |
 </details>
 
 ---
@@ -298,7 +299,7 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 ### 📦 Module 06 — n8n AI Orchestration Agents
 **[`06_AI_Agents_n8n/`](./06_AI_Agents_n8n/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Ollama](https://img.shields.io/badge/Ollama-qwen2.5--coder:7b-orange)]() &nbsp; [![Groq](https://img.shields.io/badge/Groq-llama--3.3--70b-purple)]() &nbsp; [![OpenAI](https://img.shields.io/badge/OpenAI--compat-llama--3.3--70b-green)]()
 
-3 production-grade n8n automation blueprints for STLC — from local guardrails to cloud tools to a full PRD-to-artifacts pipeline.
+4 production-grade n8n automation blueprints for STLC — from local guardrails to cloud tools to a full PRD-to-artifacts pipeline.
 
 <details open>
 <summary><b>Click to expand: Workflow catalog</b></summary>
@@ -308,8 +309,9 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 ├── 6.1_local_ollama_qa_agent.json          # Chat agent with guardrails
 ├── 6.2_jira_prd_to_google_sheets.json      # Jira → Google Sheets
 ├── 6.3_stlc_artifact_generator.json        # PRD PDF → 3 artifacts
+├── 6.4_jira_bug_agent.json                 # Chat → Jira bug ticket
 ├── README.md                               # Interactive catalog
-├── images/                                 # 6 proof screenshots
+├── images/                                 # 8 proof screenshots
 └── outputs/                                # Execution artifacts
     ├── Product_Requirements_Document_VWO.com.pdf
     └── 6.3_stlc_artifacts/
@@ -323,12 +325,14 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 | [6.1](./06_AI_Agents_n8n/6.1_local_ollama_qa_agent.json) | Local QA Chat Agent | Ollama `qwen2.5-coder:7b` | Chat Agent + Guardrails | 4 |
 | [6.2](./06_AI_Agents_n8n/6.2_jira_prd_to_google_sheets.json) | Jira → Google Sheets | Groq `llama-3.3-70b` | Tool Agent + 5-phase workflow | 6 |
 | [6.3](./06_AI_Agents_n8n/6.3_stlc_artifact_generator.json) | PRD → Plan → Cases → Scripts | OpenAI `llama-3.3-70b` | Linear Pipeline (3 AI stages) | 11 |
+| [6.4](./06_AI_Agents_n8n/6.4_jira_bug_agent.json) | Chat → Jira Bug Ticket | Groq `llama-3.3-70b` | Tool Agent + Jira create | 5 |
 
 **Highlights:**
 - **6.1** — Anti-apology guardrails, out-of-scope refusal with fixed string
 - **6.2** — Jira + Google Sheets integration, mandatory 5-phase agent workflow
 - **6.3** — Upload PDF → AI generates Test Plan + CSV cases + Playwright scripts → ZIP download
-- All 3 verified end-to-end with proof screenshots and generated artifacts
+- **6.4** — Chat → AI formats bug report → creates structured Jira ticket with markdown body
+- All 4 verified end-to-end with proof screenshots and generated artifacts
 
 [→ View full catalog](./06_AI_Agents_n8n/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 

@@ -1,0 +1,176 @@
+{
+  "name": "6.4_jira_bug_agent",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi I am QABuddy!",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "94420e37-9862-479e-99da-3e80d39c0abe",
+      "name": "When chat message received",
+      "webhookId": "4a07077b-b205-4eaf-9815-b2729f727c9c"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an expert QA Automation Engineer with 15 years of experience. Your task is to process raw bug details from the chat and format them into a perfectly structured Jira bug ticket. \n\nYou MUST format the Description field using standard Jira markdown text:\n- Use *bold* for section headers (e.g., *Environment:*, *Steps to Reproduce:*).\n- Use numbered lists (1., 2., 3.) for steps.\n- Separate sections with clear line breaks.\n\nStructure the description exactly like this:\n*Environment:* [Insert OS/Browser/Build details if provided, else leave blank]\n\n*Steps to Reproduce:*\n1. [Step 1]\n2. [Step 2]\n\n*Expected Result:*\n[Clear description of what should happen]\n\n*Actual Result:*\n[Clear description of the bug/crash]\n\nUse the attached Jira tool to create the ticket. If the tool fails or returns an error, stop immediately and report the error."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        0
+      ],
+      "id": "8026231b-3d71-4d33-a11e-894dd9c80c64",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        224,
+        224
+      ],
+      "id": "1f30f3f7-a97f-4792-a31d-4568a4082c78",
+      "name": "QWEN Brain",
+      "credentials": {
+        "groqApi": {
+          "id": "jGkeui4u8XZKDRKr",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 1
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        352,
+        224
+      ],
+      "id": "ac825f6f-a188-454f-8258-d2ce9af87b17",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10001",
+          "mode": "list",
+          "cachedResultName": "QA Testing"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "10011",
+          "mode": "list",
+          "cachedResultName": "Bug"
+        },
+        "summary": "={{ $fromAI('Summary', '', 'string') }}",
+        "additionalFields": {
+          "description": "={{ $fromAI('Description', '', 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        496,
+        224
+      ],
+      "id": "b7ec5eeb-9b28-4eba-8f7a-f0ba828d0ea5",
+      "name": "Create an issue in Jira Software",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "z7azHk2t6RY7TiRo",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QWEN Brain": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an issue in Jira Software": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "889217a1-e8e4-44e0-abfa-fd35687b1879",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3809fdeecd51556e99ab740fe416251615d7c00fb4a2381a6bb69205043d776e"
+  },
+  "nodeGroups": [],
+  "id": "vlW7gMzekbJ4YeUu",
+  "tags": [
+    {
+      "name": "AI3X",
+      "id": "xP2VChc6Slp5kv4c",
+      "updatedAt": "2026-07-20T10:10:34.281Z",
+      "createdAt": "2026-07-20T10:10:34.281Z"
+    },
+    {
+      "updatedAt": "2026-07-19T22:05:22.683Z",
+      "createdAt": "2026-07-19T22:05:22.683Z",
+      "id": "kZgiuXXbR81Lc3P7",
+      "name": "learnAI"
+    }
+  ]
+}

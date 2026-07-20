@@ -1,8 +1,8 @@
 # n8n AI Orchestration Agents
 
-> **3 automation blueprints** for Software Testing Life Cycle (STLC), powered by n8n, LangChain, and multi-LLM orchestration.
+> **4 automation blueprints** for Software Testing Life Cycle (STLC), powered by n8n, LangChain, and multi-LLM orchestration.
 
-[![Workflows](https://img.shields.io/badge/workflows-3-blue)](#-blueprint-catalog)
+[![Workflows](https://img.shields.io/badge/workflows-4-blue)](#-blueprint-catalog)
 [![Ollama](https://img.shields.io/badge/ollama-qwen2.5--coder:7b-orange)](#1-local-ollama-qa-agent-61_local_ollama_qa_agentjson)
 [![Groq](https://img.shields.io/badge/groq-llama--3.3--70b-purple)](#2-jira-prd-to-google-sheets-test-case-generator-62_jira_prd_to_google_sheetsjson)
 [![OpenAI](https://img.shields.io/badge/openai--compatible-llama--3.3--70b-green)](#3-stlc-artifact-generator-63_stlc_artifact_generatorjson)
@@ -19,6 +19,7 @@
 | [1](##-1-local-ollama-qa-agent) | Local Ollama QA Agent | Ollama `qwen2.5-coder:7b` | Chat Agent | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
 | [2](##-2-jira-prd-to-google-sheets-test-case-generator) | Jira PRD → Google Sheets | Groq `llama-3.3-70b` | Tool Agent | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
 | [3](##-3-stlc-artifact-generator) | STLC Artifact Generator | OpenAI `llama-3.3-70b` | Pipeline | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
+| [4](##-4-jira-bug-agent) | Jira Bug Agent | Groq `llama-3.3-70b` | Tool Agent | ![Inactive](https://img.shields.io/badge/-inactive-lightgrey) |
 
 </details>
 
@@ -143,14 +144,60 @@ Phase 5: Return markdown summary to user
 
 ---
 
+<details>
+<summary><h3>4. Jira Bug Agent</h3></summary>
+
+**File:** `6.4_jira_bug_agent.json`
+
+| Attribute | Value |
+|-----------|-------|
+| **Identity** | Expert QA Automation Engineer (15+ yrs) |
+| **LLM** | Groq Cloud — `llama-3.3-70b-versatile` |
+| **Memory** | Sliding Window Buffer (contextWindowLength: 1) |
+| **Integrations** | Jira (create) |
+| **Trigger** | Chat (Webhook) |
+
+**Flow:**
+
+```
+Chat (raw bug details)
+       ↓
+AI Agent formats using Jira markdown template
+       ↓
+Creates bug ticket in Jira Software Cloud (Project: QA Testing, Type: Bug)
+       ↓
+Returns success or error to user
+```
+
+The agent's system prompt enforces a strict Jira description format:
+- `*Environment:*` — OS/Browser/Build details
+- `*Steps to Reproduce:*` — Numbered list
+- `*Expected Result:*`
+- `*Actual Result:*`
+
+<details>
+<summary><b>📊 Execution Proofs</b></summary>
+
+###### n8n Workflow
+![Jira Bug Agent Workflow](images/Screenshot%202026-07-20%20at%207.47.14%E2%80%AFPM.png)
+
+###### Created Jira Bug Ticket
+![Jira Bug Ticket Output](images/Screenshot%202026-07-20%20at%207.47.54%E2%80%AFPM.png)
+
+</details>
+</details>
+
+---
+
 ## 🔧 Integration Matrix
 
-| Integration | Workflow 1 | Workflow 2 | Workflow 3 |
-|-------------|:---:|:---:|:---:|
-| Ollama (local) | ✅ | ❌ | ❌ |
-| Groq Cloud | ❌ | ✅ | ❌ |
-| OpenAI (compat) | ❌ | ❌ | ✅ |
-| Jira | ❌ | ✅ | ❌ |
-| Google Sheets | ❌ | ✅ | ❌ |
-| PDF Extraction | ❌ | ❌ | ✅ |
-| File Download | ❌ | ❌ | ✅ |
+| Integration | Workflow 1 | Workflow 2 | Workflow 3 | Workflow 4 |
+|-------------|:---:|:---:|:---:|:---:|
+| Ollama (local) | ✅ | ❌ | ❌ | ❌ |
+| Groq Cloud | ❌ | ✅ | ❌ | ✅ |
+| OpenAI (compat) | ❌ | ❌ | ✅ | ❌ |
+| Jira (read) | ❌ | ✅ | ❌ | ❌ |
+| Jira (create) | ❌ | ❌ | ❌ | ✅ |
+| Google Sheets | ❌ | ✅ | ❌ | ❌ |
+| PDF Extraction | ❌ | ❌ | ✅ | ❌ |
+| File Download | ❌ | ❌ | ✅ | ❌ |
