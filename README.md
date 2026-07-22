@@ -3,7 +3,7 @@
 [![Modules](https://img.shields.io/badge/modules-7-blue?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/status-100%25_complete-brightgreen?style=for-the-badge)]()
 [![LLM](https://img.shields.io/badge/LLM-Ollama_|_Groq_|_OpenAI--compat-orange?style=for-the-badge)]()
-[![Framework](https://img.shields.io/badge/framework-RICE--POT_|_B.L.A.S.T.-purple?style=for-the-badge)]()
+[![Framework](https://img.shields.io/badge/framework-RICE--POT_|_B.L.A.S.T._|_A.N.T.-purple?style=for-the-badge)]()
 
 A unified QA engineering and AI testing learning repository — 7 production-grade modules spanning prompt engineering, automated API testing, full-stack dashboards, n8n AI agent orchestration, and a local-first AI job tracker.
 
@@ -11,12 +11,85 @@ A unified QA engineering and AI testing learning repository — 7 production-gra
 
 ## 📋 Quick Nav
 
-| | | |
-|---|---|---|
-| [📊 Portfolio Overview](#-portfolio-overview) | [📂 Module 01](#-module-01--ai-driven-test-plan-generator) | [📂 Module 04](#-module-04--jira-qa-test-plan-agent) |
-| [🛠️ Architectures](#-architectures) | [📂 Module 02](#-module-02--ai-driven-test-case-generator) | [📂 Module 05](#-module-05--test-strategy-builder-agent) |
-| [🚀 Getting Started](#-getting-started) | [📂 Module 03](#-module-03--playwright-api-test-framework) | [📂 Module 06](#-module-06--n8n-ai-orchestration-agents) |
-| | [📂 Module 07](#-module-07--roleradar-ai-job-tracker) | |
+| Portfolio & Architecture | Prompt & Automation Modules | Full-Stack & Agent Modules |
+|:-------------------------|:----------------------------|:---------------------------|
+| [📊 Portfolio Overview](#-portfolio-overview) | [📦 Module 01 — Test Plan Generator](#-module-01--ai-driven-test-plan-generator) | [📦 Module 04 — Jira QA Agent](#-module-04--jira-qa-test-plan-agent) |
+| [🗂️ Repository Structure](#%EF%B8%8F-repository-file-structure) | [📦 Module 02 — Test Case Generator](#-module-02--ai-driven-test-case-generator) | [📦 Module 05 — Strategy Builder](#-module-05--test-strategy-builder-agent) |
+| [🛠️ Architectures](#%EF%B8%8F-architectures) | [📦 Module 03 — Playwright Framework](#-module-03--playwright-api-test-framework) | [📦 Module 06 — n8n AI Suite](#-module-06--n8n-ai-orchestration-agents) |
+| [🚀 Getting Started](#-getting-started) | | [📦 Module 07 — RoleRadar AI Tracker](#-module-07--roleradar-ai-job-tracker) |
+
+---
+
+## 🗂️ Repository File Structure
+
+<details open>
+<summary><b>Click to expand: Complete interactive directory tree</b></summary>
+
+```text
+ai-tester-blueprint/
+├── 📁 01_test_plan_generator/             # Module 01: Prompt pipeline for Restful Booker API
+│   ├── 📄 README.md
+│   ├── 📁 docs/                            # Spec & Anti-hallucination rules
+│   │   ├── Anti_Hallucinations_Rules.md
+│   │   └── Source_Context.md
+│   └── 📁 output/                          # Verified output test plan
+│       └── Final_Test_Plan.md
+│
+├── 📁 02_test_case_generator/             # Module 02: PRD to test case matrix generator
+│   ├── 📄 README.md
+│   ├── 📁 docs/                            # VWO PRD context & rules
+│   │   ├── Anti_Hallucinations_Rules.md
+│   │   ├── Source_Context.md
+│   │   └── login_proof_screenshot.png
+│   └── 📁 output/                          # Generated test cases (.csv + .md)
+│       ├── Final_Test_Cases.csv
+│       └── Final_Test_Cases.md
+│
+├── 📁 03_playwright_api_framework/        # Module 03: Production API test framework
+│   ├── 📄 README.md
+│   ├── 📄 Anti_Hallucinations_Rules.md
+│   ├── 📄 skill.md
+│   └── 📁 playwright_api_framework/        # TypeScript Playwright test suite
+│       ├── 📁 api/                         # API controllers & request interfaces
+│       ├── 📁 core/                        # Base client & env validators
+│       ├── 📁 data/                        # Dynamic test data builders
+│       ├── 📁 fixtures/                    # Custom test fixtures with auto-auth
+│       └── 📁 tests/                       # Authenticated spec files
+│
+├── 📁 04_jira_ai_agent/                   # Module 04: Full-stack Jira QA test plan dashboard
+│   ├── 📄 README.md
+│   ├── 📄 LLM.md | findings.md | progress.md | prompt.md | task_plan.md
+│   ├── 📁 backend/                         # Node/Express proxy & Groq LLM client
+│   ├── 📁 client/                          # React + Vite glassmorphic UI
+│   └── 📁 docs/                            # B.L.A.S.T. specs & architecture SOPs
+│
+├── 📁 05_test_strategy_builder/           # Module 05: Jira PRD to Test Strategy dashboard
+│   ├── 📄 README.md
+│   ├── 📄 B.L.A.S.T.md | Objective.md | prompt.md | vercel.json
+│   ├── 📁 client/                          # React + Vite dark mode UI
+│   ├── 📁 server/                          # Express proxy & Jira ADF parser
+│   └── 📁 docs/                            # Findings, requirements, execution log
+│
+├── 📁 06_AI_Agents_n8n/                   # Module 06: n8n automation blueprints for STLC
+│   ├── 📄 README.md                        # Interactive blueprint catalog
+│   ├── 📄 6.1_local_ollama_qa_agent.json   # Local guardrailed chat agent
+│   ├── 📄 6.2_jira_prd_to_google_sheets.json # Jira → Sheets tool workflow
+│   ├── 📄 6.3_stlc_artifact_generator.json # PRD PDF → ZIP generator pipeline
+│   ├── 📄 6.4_jira_bug_agent.json          # Chat → Jira bug creator
+│   ├── 📁 images/                          # Execution proof screenshots
+│   └── 📁 outputs/                         # Generated STLC artifacts & sample PDF
+│
+├── 📁 07_jobtracker_ai/                   # Module 07: Local-first RoleRadar AI Job Tracker
+│   ├── 📄 B.L.A.S.T.md | LLM.md | findings.md | progress.md | prompt.md | task_plan.md
+│   └── 📁 roleradar-ai/                    # Vite + React + TS Local SPA
+│       ├── 📄 README.md                    # Interactive module documentation
+│       ├── 📄 vite.config.ts | package.json
+│       └── 📁 src/                         # Kanban, IndexedDB, Ollama AI components
+│
+└── 📄 README.md                            # Portfolio master documentation
+```
+
+</details>
 
 ---
 
@@ -35,14 +108,13 @@ A unified QA engineering and AI testing learning repository — 7 production-gra
 | [06](#-module-06--n8n-ai-orchestration-agents) | n8n Agents | Ollama + Groq + OpenAI | n8n Agents + LangChain + Pipeline | Jira / PDF / Chat | JSON Blueprints + Sheets + ZIP + Jira Tickets | 🤖 n8n Orchestration |
 | [07](#-module-07--roleradar-ai-job-tracker) | RoleRadar AI | Ollama `deepseek-r1:8b` | B.L.A.S.T. + A.N.T. 3-Layer | Job Applications | Kanban Board + AI Insights | 📡 Local-First SPA |
 
-
 </details>
 
 ---
 
 ## 🛠️ Architectures
 
-Two architectural frameworks power the portfolio, evolving from prompt-only to full-stack to orchestrated pipelines.
+Core architectural frameworks power the portfolio, evolving from prompt-only to full-stack to orchestrated pipelines.
 
 <details>
 <summary><b>🔍 RICE-POT — Prompt Engineering Framework</b> <code>Modules 01–03</code></summary>
@@ -77,7 +149,7 @@ Each module runs a **4-step self-validation audit**: Verified Facts → Missing/
 </details>
 
 <details>
-<summary><b>🚀 B.L.A.S.T. — System Architecture Framework</b> <code>Modules 04–05</code></summary>
+<summary><b>🚀 B.L.A.S.T. — System Architecture Framework</b> <code>Modules 04–05 & 07</code></summary>
 
 Decoupled full-stack design for test engines, proxy servers, and visual rendering:
 
@@ -103,6 +175,19 @@ Three orchestration patterns for AI-driven STLC automation:
 | **Tool Agent (create)** | 6.4 | Agent with Jira (create) tool — raw chat → formatted bug ticket |
 </details>
 
+<details>
+<summary><b>📡 A.N.T. 3-Layer Storage & Local AI Protocol</b> <code>Module 07</code></summary>
+
+Privacy-first architecture powering offline client-side applications:
+
+| Layer | Component | Purpose |
+|:------|:----------|:--------|
+| **App State** | React Context + State | In-memory interactive UI updates & optimistic UI |
+| **Native DB** | IndexedDB via `idb` | Client-side transactional persistent persistence |
+| **Local LLM** | Ollama via Vite Proxy | Offline AI inference (`deepseek-r1:8b`) with zero data egress |
+
+</details>
+
 ---
 
 ## 📂 Modules
@@ -121,7 +206,8 @@ Parses a Restful Booker API spec into a production-grade, hallucination-free tes
 ├── docs/
 │   ├── Anti_Hallucinations_Rules.md
 │   ├── Source_Context.md
-│   └── continue_execution_proof.jpg
+│   ├── Test Plan - Restful Booker ATB12x.docx.pdf
+│   └── continue_execution_proof.jpeg
 └── output/
     └── Final_Test_Plan.md
 ```
@@ -230,19 +316,19 @@ On-demand Jira issue fetcher and anti-hallucination QA test plan compiler with a
 
 ```text
 04_jira_ai_agent/
+├── README.md
+├── LLM.md | findings.md | progress.md | prompt.md | task_plan.md
 ├── backend/                           # Express Server Module
 │   ├── server.js                      # CORS proxy and routes
 │   └── src/services/                  # Jira, Groq, & Test Plan services
 ├── client/                            # Vite React Client
 │   ├── src/                           # App.jsx + index.css
 │   └── vite.config.js                 # Dev proxy mapping
-├── docs/
-│   ├── B.L.A.S.T.md                   # Architecture specs
-│   ├── images/                        # Dashboard screenshots
-│   └── architecture/                  # Jira fetch & SOPs
-├── .env.example
-├── .gitignore
-└── README.md
+└── docs/
+    ├── B.L.A.S.T.md                   # Architecture specs
+    ├── Objective.md                   # Objective & constraints
+    ├── architecture/                  # Jira fetch & SOPs
+    └── images/                        # Dashboard screenshots
 ```
 
 | Milestone | Status |
@@ -269,19 +355,17 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 
 ```text
 05_test_strategy_builder/
+├── README.md
+├── B.L.A.S.T.md | Objective.md | prompt.md | vercel.json
 ├── server/                            # Express Backend
 │   └── server.js                      # CORS proxy, Jira fetcher, Groq executor
 ├── client/                            # Vite React Client
 │   ├── vite.config.js
 │   └── src/
-├── docs/
-│   ├── LLM.md, findings.md
-│   ├── progress.md, task_plan.md
-│   └── requirements_discovery.md
-├── vercel.json                        # Deployment descriptor
-├── .env.example
-├── .gitignore
-└── README.md
+└── docs/
+    ├── LLM.md | findings.md
+    ├── progress.md | task_plan.md
+    └── requirements_discovery.md
 ```
 
 | Milestone | Status |
@@ -304,16 +388,16 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 
 4 production-grade n8n automation blueprints for STLC — from local guardrails to cloud tools to a full PRD-to-artifacts pipeline.
 
-<details open>
-<summary><b>Click to expand: Workflow catalog</b></summary>
+<details>
+<summary><b>Click to expand: Details & workflow catalog</b></summary>
 
 ```text
 06_AI_Agents_n8n/
+├── README.md                               # Interactive catalog
 ├── 6.1_local_ollama_qa_agent.json          # Chat agent with guardrails
 ├── 6.2_jira_prd_to_google_sheets.json      # Jira → Google Sheets
 ├── 6.3_stlc_artifact_generator.json        # PRD PDF → 3 artifacts
 ├── 6.4_jira_bug_agent.json                 # Chat → Jira bug ticket
-├── README.md                               # Interactive catalog
 ├── images/                                 # 8 proof screenshots
 └── outputs/                                # Execution artifacts
     ├── Product_Requirements_Document_VWO.com.pdf
@@ -343,32 +427,6 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 
 ---
 
-## 🚀 Getting Started
-
-<details open>
-<summary><b>Click to expand: Prerequisites & quick-start per module</b></summary>
-
-### Prerequisites
-
-- [Ollama](https://ollama.ai/) — pull `qwen2.5-coder:14b` (`ollama pull qwen2.5-coder:14b`)
-- [Node.js](https://nodejs.org/) 18+
-- Target project documentation (PRD, API spec, screenshots)
-
-### Module Quick-Start
-
-| Module | Type | Quick Command |
-|:-------|:----:|:--------------|
-| **01–02** | 🧠 Prompt Pipeline | Clean source docs → Prompt LLM → Validate → Review `output/` |
-| **03** | 📦 Code Framework | `npm install && cp .env.example .env && npm test` |
-| **04** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
-| **05** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
-| **06** | 🤖 n8n Suite | Import JSON → Configure credentials → Trigger via Chat or Form |
-| **07** | 📡 Local-First SPA | `cd 07_jobtracker_ai/roleradar-ai && npm install && npm run dev` |
-
-</details>
-
----
-
 ### 📦 Module 07 — RoleRadar AI Job Tracker
 **[`07_jobtracker_ai/`](./07_jobtracker_ai/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Stack](https://img.shields.io/badge/stack-React_|_Vite_|_TypeScript-blue)]() &nbsp; [![AI](https://img.shields.io/badge/AI-Ollama_deepseek--r1:8b-black)]() &nbsp; [![Privacy](https://img.shields.io/badge/data-100%25_local-success)]()
 
@@ -384,6 +442,7 @@ A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job appl
 ├── findings.md               # Constraints, edge cases, architecture decisions
 ├── progress.md               # Execution log & repair patches
 ├── B.L.A.S.T.md              # Protocol reference
+├── prompt.md                 # System prompt guidelines
 └── roleradar-ai/             # Vite + React + TS SPA
     ├── vite.config.ts         # Ollama proxy: /api/ollama → localhost:11434
     ├── src/
@@ -422,6 +481,32 @@ A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job appl
 - **JSON Backup/Restore** — full round-trip export with schema version tag
 
 [→ View module README](./07_jobtracker_ai/roleradar-ai/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
+
+</details>
+
+---
+
+## 🚀 Getting Started
+
+<details open>
+<summary><b>Click to expand: Prerequisites & quick-start per module</b></summary>
+
+### Prerequisites
+
+- [Ollama](https://ollama.ai/) — pull `qwen2.5-coder:14b` or `deepseek-r1:8b` (`ollama pull qwen2.5-coder:14b`)
+- [Node.js](https://nodejs.org/) 18+
+- Target project documentation (PRD, API spec, screenshots)
+
+### Module Quick-Start
+
+| Module | Type | Quick Command |
+|:-------|:----:|:--------------|
+| **01–02** | 🧠 Prompt Pipeline | Clean source docs → Prompt LLM → Validate → Review `output/` |
+| **03** | 📦 Code Framework | `npm install && cp .env.example .env && npm test` |
+| **04** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
+| **05** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
+| **06** | 🤖 n8n Suite | Import JSON → Configure credentials → Trigger via Chat or Form |
+| **07** | 📡 Local-First SPA | `cd 07_jobtracker_ai/roleradar-ai && npm install && npm run dev` |
 
 </details>
 
