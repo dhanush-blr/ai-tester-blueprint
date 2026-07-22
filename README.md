@@ -1,11 +1,11 @@
 # 🧪 AI Tester Blueprint Portfolio
 
-[![Modules](https://img.shields.io/badge/modules-6-blue?style=for-the-badge)]()
+[![Modules](https://img.shields.io/badge/modules-7-blue?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/status-100%25_complete-brightgreen?style=for-the-badge)]()
 [![LLM](https://img.shields.io/badge/LLM-Ollama_|_Groq_|_OpenAI--compat-orange?style=for-the-badge)]()
 [![Framework](https://img.shields.io/badge/framework-RICE--POT_|_B.L.A.S.T.-purple?style=for-the-badge)]()
 
-A unified QA engineering and AI testing learning repository — 6 production-grade modules spanning prompt engineering, automated API testing, full-stack dashboards, and n8n AI agent orchestration.
+A unified QA engineering and AI testing learning repository — 7 production-grade modules spanning prompt engineering, automated API testing, full-stack dashboards, n8n AI agent orchestration, and a local-first AI job tracker.
 
 ---
 
@@ -16,6 +16,7 @@ A unified QA engineering and AI testing learning repository — 6 production-gra
 | [📊 Portfolio Overview](#-portfolio-overview) | [📂 Module 01](#-module-01--ai-driven-test-plan-generator) | [📂 Module 04](#-module-04--jira-qa-test-plan-agent) |
 | [🛠️ Architectures](#-architectures) | [📂 Module 02](#-module-02--ai-driven-test-case-generator) | [📂 Module 05](#-module-05--test-strategy-builder-agent) |
 | [🚀 Getting Started](#-getting-started) | [📂 Module 03](#-module-03--playwright-api-test-framework) | [📂 Module 06](#-module-06--n8n-ai-orchestration-agents) |
+| | [📂 Module 07](#-module-07--roleradar-ai-job-tracker) | |
 
 ---
 
@@ -32,6 +33,8 @@ A unified QA engineering and AI testing learning repository — 6 production-gra
 | [04](#-module-04--jira-qa-test-plan-agent) | Jira QA Agent | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-plan-*.md` | 🌐 Full-Stack App |
 | [05](#-module-05--test-strategy-builder-agent) | Strategy Builder | Groq `gpt-oss-120b` | B.L.A.S.T. + Jira REST API | Jira Issue ADF | Dashboard + `test-strategy-*.md` | 🌐 Full-Stack App |
 | [06](#-module-06--n8n-ai-orchestration-agents) | n8n Agents | Ollama + Groq + OpenAI | n8n Agents + LangChain + Pipeline | Jira / PDF / Chat | JSON Blueprints + Sheets + ZIP + Jira Tickets | 🤖 n8n Orchestration |
+| [07](#-module-07--roleradar-ai-job-tracker) | RoleRadar AI | Ollama `deepseek-r1:8b` | B.L.A.S.T. + A.N.T. 3-Layer | Job Applications | Kanban Board + AI Insights | 📡 Local-First SPA |
+
 
 </details>
 
@@ -360,6 +363,65 @@ On-demand Jira issue parser and boardroom-ready QA Test Strategy compiler with V
 | **04** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
 | **05** | 🌐 Full-Stack App | `npm install && cp .env.example .env && npm run dev` |
 | **06** | 🤖 n8n Suite | Import JSON → Configure credentials → Trigger via Chat or Form |
+| **07** | 📡 Local-First SPA | `cd 07_jobtracker_ai/roleradar-ai && npm install && npm run dev` |
+
+</details>
+
+---
+
+### 📦 Module 07 — RoleRadar AI Job Tracker
+**[`07_jobtracker_ai/`](./07_jobtracker_ai/)** &nbsp; [![Status](https://img.shields.io/badge/status-complete-brightgreen)]() &nbsp; [![Stack](https://img.shields.io/badge/stack-React_|_Vite_|_TypeScript-blue)]() &nbsp; [![AI](https://img.shields.io/badge/AI-Ollama_deepseek--r1:8b-black)]() &nbsp; [![Privacy](https://img.shields.io/badge/data-100%25_local-success)]()
+
+A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job applications through a drag-and-drop Kanban pipeline with local AI insights — zero cloud, zero data egress.
+
+<details>
+<summary><b>Click to expand: Details & structure</b></summary>
+
+```text
+07_jobtracker_ai/
+├── LLM.md                    # Project constitution (schema, invariants)
+├── task_plan.md              # B.L.A.S.T. build checklist
+├── findings.md               # Constraints, edge cases, architecture decisions
+├── progress.md               # Execution log & repair patches
+├── B.L.A.S.T.md              # Protocol reference
+└── roleradar-ai/             # Vite + React + TS SPA
+    ├── vite.config.ts         # Ollama proxy: /api/ollama → localhost:11434
+    ├── src/
+    │   ├── types/index.ts     # All TypeScript interfaces
+    │   ├── db/db.ts           # IndexedDB CRUD layer (idb)
+    │   ├── services/ollama.ts # Local AI service (deepseek-r1:8b)
+    │   └── components/
+    │       ├── KanbanBoard.tsx   # @dnd-kit drag-and-drop board
+    │       ├── KanbanColumn.tsx  # Droppable columns
+    │       ├── JobCard.tsx       # Status border accents + follow-up flags
+    │       ├── JobModal.tsx      # Create/Edit modal
+    │       ├── AIAssistant.tsx   # Ollama AI panel with inline JD editor
+    │       ├── DashboardMetrics.tsx
+    │       └── FilterBar.tsx
+    └── README.md              # Full interactive module README
+```
+
+| Milestone | Status |
+|:----------|:------:|
+| IndexedDB Schema & CRUD | 🟢 100% Complete |
+| Kanban Board (Drag & Drop) | 🟢 `@dnd-kit` — cross-column drag |
+| Local AI Assistant | 🟢 Ollama `deepseek-r1:8b` |
+| Auto Follow-Up Alerts | 🟢 Applied ≥ 7 days |
+| JSON Backup & Restore | 🟢 Export / Import |
+| Inline JD Editor in AI Modal | 🟢 No-close-required JD save |
+| TypeScript Build | 🟢 Zero errors |
+
+**Highlights:**
+- **6-stage Kanban pipeline** — Wishlist → Applied → Follow-up → Interview → Offer → Rejected
+- **Status border accents** — each column has a unique color (amber / blue / purple / orange / emerald / rose)
+- **Auto follow-up flag** — ⚠️ badge appears when Applied ≥ 7 days with no status change
+- **AI Assistant** — Extract Skills, Interview Prep, Draft Follow-Up Email (all local via Ollama)
+- **Inline JD editor** — paste/save Job Description without closing the AI modal
+- **Differentiated errors** — 404 model-not-found vs Ollama-unreachable shown with distinct UI and fix instructions
+- **100% offline** — IndexedDB + Vite proxy to localhost Ollama, zero external calls
+- **JSON Backup/Restore** — full round-trip export with schema version tag
+
+[→ View module README](./07_jobtracker_ai/roleradar-ai/README.md) &nbsp; [↑ Back to top](#-ai-tester-blueprint-portfolio)
 
 </details>
 
