@@ -80,9 +80,10 @@ ai-tester-blueprint/
 │   └── 📁 outputs/                         # Generated STLC artifacts & sample PDF
 │
 ├── 📁 07_jobtracker_ai/                   # Module 07: Local-first RoleRadar AI Job Tracker
-│   ├── 📄 B.L.A.S.T.md | LLM.md | findings.md | progress.md | prompt.md | task_plan.md
+│   ├── 📄 README.md                        # Module 07 Master Documentation
+│   ├── 📁 docs/                            # B.L.A.S.T. specs, LLM schemas, findings, & logs
 │   └── 📁 roleradar-ai/                    # Vite + React + TS Local SPA
-│       ├── 📄 README.md                    # Interactive module documentation
+│       ├── 📄 README.md                    # Interactive app guide
 │       ├── 📄 vite.config.ts | package.json
 │       └── 📁 src/                         # Kanban, IndexedDB, Ollama AI components
 │
@@ -437,12 +438,14 @@ A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job appl
 
 ```text
 07_jobtracker_ai/
-├── LLM.md                    # Project constitution (schema, invariants)
-├── task_plan.md              # B.L.A.S.T. build checklist
-├── findings.md               # Constraints, edge cases, architecture decisions
-├── progress.md               # Execution log & repair patches
-├── B.L.A.S.T.md              # Protocol reference
-├── prompt.md                 # System prompt guidelines
+├── README.md                 # Module 07 Master Documentation
+├── docs/                     # Architecture & project specifications
+│   ├── B.L.A.S.T.md          # Architecture protocol reference
+│   ├── LLM.md                # Data schema & invariants (Project Constitution)
+│   ├── findings.md           # Constraints & trade-offs
+│   ├── progress.md           # Execution log & patch history
+│   ├── prompt.md             # System prompt guidelines
+│   └── task_plan.md          # B.L.A.S.T. build checklist
 └── roleradar-ai/             # Vite + React + TS SPA
     ├── vite.config.ts         # Ollama proxy: /api/ollama → localhost:11434
     ├── src/
