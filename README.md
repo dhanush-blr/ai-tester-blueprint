@@ -489,7 +489,7 @@ A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job appl
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started 
 
 <details open>
 <summary><b>Click to expand: Prerequisites & quick-start per module</b></summary>
@@ -517,4 +517,4 @@ A local-first, privacy-focused, AI-powered job tracker SPA. Tracks tech job appl
 
 ## 📄 License
 
-This project is for learning and portfolio purposes.
+This project is for learning and portfolio purposes only.
